@@ -209,8 +209,11 @@ document.querySelector('.filter-bar')?.addEventListener('click',e=>{
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 const nav=document.querySelector('.nav'),toggle=document.querySelector('.menu-toggle');
-toggle?.addEventListener('click',()=>{const open=nav?.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open))});
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
+const closeHomeNav=()=>{nav?.classList.remove('open');toggle?.setAttribute('aria-expanded','false');document.body.classList.remove('nav-lock')};
+toggle?.addEventListener('click',()=>{const open=nav?.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));document.body.classList.toggle('nav-lock',Boolean(open))});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',closeHomeNav));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeHomeNav()});
+window.addEventListener('resize',()=>{if(window.innerWidth>900)closeHomeNav()});
 
 loadHOTPData();
 
