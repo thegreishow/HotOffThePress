@@ -290,3 +290,14 @@ button{cursor:pointer}
 .contact-line strong{font:600 17px "Space Grotesk",sans-serif}
 .contact-line:hover strong{color:var(--yellow)}
 @media(max-width:780px){.visit-grid{grid-template-columns:1fr}.visit-card,.contact-card{padding:30px 22px}.visit-hours{grid-template-columns:1fr}.visit-hours div+div{border-left:0;border-top:1px solid #bbb;padding-left:0}}
+
+.real-work-grid .work-card{background:#111;overflow:hidden}
+.real-work-image{aspect-ratio:4/3;background:#e9e6df;overflow:hidden;position:relative}
+.real-work-image img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .35s ease}
+.real-work-grid .work-card:hover .real-work-image img{transform:scale(1.035)}
+.real-work-grid .work-caption{background:#111;color:#fff}
+.portfolio-proof{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:24px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.portfolio-proof>div{display:flex;gap:16px;align-items:center}
+.portfolio-proof strong{font:700 10px "Space Grotesk",sans-serif;letter-spacing:.12em}
+.portfolio-proof span{font-size:12px;color:#777}
+@media(max-width:640px){.portfolio-proof,.portfolio-proof>div{align-items:flex-start;flex-direction:column}.real-work-image{aspect-ratio:1/1}}
