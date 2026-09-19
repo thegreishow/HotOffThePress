@@ -562,3 +562,24 @@ button{cursor:pointer}
   padding-left:max(24px,calc((100vw - 1220px)/2))!important;
   padding-right:max(24px,calc((100vw - 1220px)/2))!important;
 }
+
+/* Explore HOTP image refresh rev 20 */
+.home-preview-dark .real-work-image,
+.home-preview-dark .service-photo{
+  overflow:hidden;
+  background:#111;
+}
+.home-preview-dark .real-work-image img,
+.home-preview-dark .service-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(1.12);
+  transition:transform .65s cubic-bezier(.2,.8,.2,1);
+}
+.home-preview-dark .service-card:hover .real-work-image img,
+.home-preview-dark .service-card:hover .service-photo img{
+  transform:scale(1.17);
+}
+.home-preview-dark .pricing-photo img{transform:scale(1.16)}
+.home-preview-dark .service-card:hover .pricing-photo img{transform:scale(1.21)}
