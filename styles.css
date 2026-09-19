@@ -405,3 +405,31 @@ button{cursor:pointer}
 .future-image-panel .future-card{background:rgba(242,239,231,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 
 @media(max-width:760px){.process-image-panel:before,.pricing-image-panel:before,.future-image-panel:before{background:rgba(5,5,5,.84)}.image-panel{background-position:center}}
+
+/* Homepage corrections rev 15 */
+.hero-grid{min-height:690px;align-items:start;padding-top:34px;padding-bottom:26px}
+.hero-copy{padding-top:6px}
+.hero-lede{margin-top:22px;margin-bottom:24px}
+.quick-contact{margin-bottom:18px}
+.hero-actions{position:relative;z-index:4}
+.capability-ribbon{position:relative;z-index:3}
+
+.home-preview-dark{background:#0a0a0a;color:#fff;width:100%;max-width:none;padding-left:max(24px,calc((100vw - 1220px)/2));padding-right:max(24px,calc((100vw - 1220px)/2))}
+.home-preview-dark .eyebrow.dark{color:#aaa}.home-preview-dark .section-heading p{color:#aaa}.home-preview-dark .service-grid{border-color:rgba(255,255,255,.13)}
+.home-preview-dark .service-card{background:#111;border-color:rgba(255,255,255,.13);color:#fff}.home-preview-dark .service-card:hover{background:#171717;box-shadow:0 22px 60px rgba(0,0,0,.28)}
+.home-preview-dark .service-meta>span{color:#777}.home-preview-dark .service-meta p{color:#aaa}
+
+.process-image-panel{background-image:none!important}
+.process-image-panel:before{display:none!important}
+.process-image-panel .step{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+
+.order-image-panel{position:relative;isolation:isolate;color:#fff;background-image:url("https://hotpjamaica.com/wp-content/uploads/2022/10/Group-111-1.png");background-size:cover;background-position:center 46%;background-repeat:no-repeat;overflow:hidden}
+.order-image-panel:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,5,5,.94) 0%,rgba(5,5,5,.84) 52%,rgba(5,5,5,.62) 100%),linear-gradient(0deg,rgba(0,217,255,.08),transparent 55%)}
+.order-image-panel>.shell{position:relative;z-index:1}.order-image-panel .eyebrow.dark{color:#bdbdbd}.order-image-panel .section-heading p{color:#d0d0d0}
+.order-image-panel .order-grid{border-color:rgba(255,255,255,.2)}.order-image-panel .order-card{background:rgba(8,8,8,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:rgba(255,255,255,.16)}
+.order-image-panel .order-card>span{color:var(--yellow)}.order-image-panel .order-card p{color:#c0c0c0}.order-image-panel .btn-outline-dark{color:#fff;border-color:rgba(255,255,255,.55)}.order-image-panel .btn-outline-dark:hover{background:#fff;color:#111}
+
+.future-image-panel{background-image:url("https://hotpjamaica.com/wp-content/uploads/2022/10/Group-180.png")!important;background-position:center 52%!important}
+.future-image-panel:before{background:linear-gradient(95deg,rgba(5,5,5,.95) 0%,rgba(5,5,5,.80) 52%,rgba(5,5,5,.44) 100%),linear-gradient(0deg,rgba(0,217,255,.09),transparent 55%)!important}
+
+@media(max-width:760px){.hero-grid{min-height:auto;padding-top:12px;padding-bottom:20px}.hero-copy{padding-top:0}.order-image-panel:before{background:rgba(5,5,5,.84)}}
