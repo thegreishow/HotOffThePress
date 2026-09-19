@@ -43,3 +43,7 @@
 .portfolio-slide.is-active .slide-overlay:before{content:"";position:absolute;z-index:-1;width:65%;height:300%;left:-80%;bottom:-90%;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.04) 42%,rgba(255,255,255,.28) 49%,rgba(255,216,0,.13) 52%,rgba(18,198,232,.1) 55%,transparent 65%);transform:skewX(-14deg);animation:cardSheen 5.2s cubic-bezier(.4,0,.2,1) infinite;pointer-events:none}
 @keyframes cardSheen{0%,62%{left:-90%;opacity:0}68%{opacity:1}88%{left:130%;opacity:.85}100%{left:130%;opacity:0}}@keyframes miniSheen{0%,65%{transform:translateX(-35%)}90%,100%{transform:translateX(35%)}}
 @media(prefers-reduced-motion:reduce){.portfolio-slide.is-active .slide-overlay:before,.portfolio-slide .slide-number:after{animation:none;display:none}}
+
+
+/* Continuous gallery motion: autoplay glides freely; manual drag still feels tactile */
+.portfolio-stage{scroll-snap-type:none}.portfolio-stage.dragging{scroll-snap-type:none}.portfolio-slide{scroll-snap-align:none}
