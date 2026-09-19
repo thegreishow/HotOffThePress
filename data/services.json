@@ -1,0 +1,83 @@
+{
+  "source": "https://hotpjamaica.com/services/",
+  "categories": [
+    {
+      "id": "printing-copying",
+      "name": "Printing and Copying",
+      "items": [
+        "Full Colour",
+        "Black & White",
+        "Business Cards",
+        "Letterheads",
+        "Press Kits",
+        "Invitations",
+        "Certificates",
+        "Programmes",
+        "Stickers",
+        "Bookmarkers",
+        "Brochures",
+        "Flyers",
+        "Citations",
+        "Menus",
+        "CD Inserts & Labels",
+        "Newsletters",
+        "IDs",
+        "Tickets"
+      ]
+    },
+    {
+      "id": "large-format",
+      "name": "Large Format",
+      "items": [
+        "Scanning & Printing",
+        "Posters",
+        "Banners",
+        "Colour and B/W",
+        "Architectural Plans",
+        "Vinyl",
+        "Adhesive Vinyl (Die Cut)",
+        "Backlit",
+        "Laminating",
+        "Mounting",
+        "Framing"
+      ]
+    },
+    {
+      "id": "heat-transfers",
+      "name": "Heat Transfers",
+      "items": [
+        "T-Shirts",
+        "Caps",
+        "Mouse Pads"
+      ]
+    },
+    {
+      "id": "binding",
+      "name": "Binding",
+      "items": [
+        "Coil",
+        "Spiral",
+        "Wire"
+      ]
+    },
+    {
+      "id": "other",
+      "name": "Other Services",
+      "items": [
+        "Cutting",
+        "Numbering",
+        "Stitch & fold",
+        "Hanging kits",
+        "Bookmarkers",
+        "Brochures",
+        "Flyers",
+        "Citations",
+        "Menus",
+        "CD Inserts & Labels",
+        "Newsletters",
+        "IDs",
+        "Tickets"
+      ]
+    }
+  ]
+}
