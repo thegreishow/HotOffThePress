@@ -183,9 +183,9 @@ document.querySelector('.capability-ribbon')?.addEventListener('click',e=>{const
 document.querySelectorAll('[data-close-quote]').forEach(btn=>btn.addEventListener('click',closeQuote));
 function closeQuote(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeQuote()});
-form.addEventListener('change',e=>{if(e.target.name==='product')renderDynamicQuoteFields();else updateQuoteEstimate()});form.addEventListener('input',e=>{if(e.target.name==='quantity')updateQuoteEstimate()});
+form?.addEventListener('change',e=>{if(e.target.name==='product')renderDynamicQuoteFields();else updateQuoteEstimate()});form?.addEventListener('input',e=>{if(e.target.name==='quantity')updateQuoteEstimate()});
 
-form.addEventListener('submit',e=>{
+form?.addEventListener('submit',e=>{
   e.preventDefault();const data=new FormData(form);const est=estimateWithAddons(data);
   const fields=['product','quantity','paperSize','sides','stock','scanMode','pages','pressType','bannerType','material','width','height','laminateType','thickness','substrate','copies','programmeMode','programmeQty','hours','premiumPaper','staple','coldLaminate','press','artwork','turnaround','notes'].filter(k=>data.has(k));
   resultContent.innerHTML='<div class="result-grid">'+fields.map(key=>{const label=key.charAt(0).toUpperCase()+key.slice(1);const value=(data.get(key)||'—').toString().replace(/[<>]/g,'');return '<div><span>'+label+'</span><strong>'+value+'</strong></div>'}).join('')+
@@ -196,10 +196,10 @@ form.addEventListener('submit',e=>{
   result.dataset.summary=summaryText;
   const mail=document.querySelector('#email-quote-summary');if(mail)mail.href='mailto:hotp@hotpjamaica.com?subject='+encodeURIComponent('Print Job Request — '+data.get('product'))+'&body='+encodeURIComponent(summaryText);
 });
-document.querySelector('[data-reset-quote]').addEventListener('click',()=>{result.hidden=true;form.hidden=false;document.querySelector('.quote-progress')?.classList.remove('complete');updateQuoteEstimate()});
+document.querySelector('[data-reset-quote]')?.addEventListener('click',()=>{result.hidden=true;form.hidden=false;document.querySelector('.quote-progress')?.classList.remove('complete');updateQuoteEstimate()});
 document.querySelector('#copy-quote-summary')?.addEventListener('click',async e=>{try{await navigator.clipboard.writeText(result.dataset.summary||'');const old=e.currentTarget.textContent;e.currentTarget.textContent='Copied';setTimeout(()=>e.currentTarget.textContent=old,1400)}catch{e.currentTarget.textContent='Copy unavailable'}});
 
-document.querySelector('.filter-bar').addEventListener('click',e=>{
+document.querySelector('.filter-bar')?.addEventListener('click',e=>{
   const btn=e.target.closest('.filter');if(!btn)return;
   document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
   const f=btn.dataset.filter;
@@ -209,7 +209,7 @@ document.querySelector('.filter-bar').addEventListener('click',e=>{
 const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 const nav=document.querySelector('.nav'),toggle=document.querySelector('.menu-toggle');
-toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open))});
+toggle?.addEventListener('click',()=>{const open=nav?.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open))});
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false')}));
 
 loadHOTPData();
