@@ -342,3 +342,10 @@ button{cursor:pointer}
 .reveal{opacity:1;transform:none}
 .reveal.visible{opacity:1;transform:none}
 @media(prefers-reduced-motion:no-preference){html.js-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}html.js-ready .reveal.visible{opacity:1;transform:none}}
+
+/* Homepage hero — authentic HOTP team photography */
+.hero-team{background-image:linear-gradient(90deg,rgba(6,6,6,.94) 0%,rgba(6,6,6,.82) 43%,rgba(6,6,6,.48) 70%,rgba(6,6,6,.34) 100%),linear-gradient(0deg,rgba(6,6,6,.58),rgba(6,6,6,.08) 58%),url("https://hotpjamaica.com/wp-content/uploads/2022/08/15.png");background-size:cover;background-position:center 42%;background-repeat:no-repeat}
+.hero-team:before{background:linear-gradient(90deg,rgba(0,217,255,.08),transparent 32%),linear-gradient(0deg,rgba(255,45,139,.08),transparent 38%)}
+.hero-team .hero-copy{position:relative;z-index:3;text-shadow:0 2px 28px rgba(0,0,0,.35)}
+.hero-team .hero-art{opacity:0;pointer-events:none}
+@media(max-width:780px){.hero-team{background-position:62% center;background-image:linear-gradient(180deg,rgba(6,6,6,.82) 0%,rgba(6,6,6,.78) 58%,rgba(6,6,6,.92) 100%),url("https://hotpjamaica.com/wp-content/uploads/2022/08/15.png")}.hero-team .hero-art{display:none}}
