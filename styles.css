@@ -555,3 +555,10 @@ button{cursor:pointer}
   .process-grid,
   .order-image-panel .order-grid{gap:12px!important}
 }
+
+/* Align Explore HOTP with the site shell rev 19 */
+.home-preview-dark{
+  box-sizing:border-box;
+  padding-left:max(24px,calc((100vw - 1220px)/2))!important;
+  padding-right:max(24px,calc((100vw - 1220px)/2))!important;
+}
