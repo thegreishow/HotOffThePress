@@ -1,0 +1,35 @@
+{
+  "name": "Hot Off The Press Jamaica",
+  "established": 1996,
+  "address": {
+    "shops": "Shops #36–39",
+    "centre": "New Kingston Business Centre",
+    "street": "30 Dominica Drive",
+    "city": "Kingston 5",
+    "country": "Jamaica"
+  },
+  "phone": {
+    "display": "876-968-4547/8",
+    "primary": "+18769684547"
+  },
+  "email": "hotp@hotpjamaica.com",
+  "instagram": "hotoffthepresskgn",
+  "hours": [
+    {
+      "days": "Mon–Fri",
+      "display": "8:30am–5:00pm"
+    },
+    {
+      "days": "Saturday",
+      "display": "10:30am–3:00pm"
+    }
+  ],
+  "staff": {
+    "total": "40+",
+    "graphicArtistsAndServiceReps": "15+"
+  },
+  "sources": [
+    "https://hotpjamaica.com/contact-us/",
+    "https://hotpjamaica.com/services/"
+  ]
+}
