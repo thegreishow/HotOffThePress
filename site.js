@@ -2,7 +2,7 @@ document.querySelectorAll('[data-quote]').forEach(b=>b.addEventListener('click',
 
 const stage=document.querySelector('#portfolio-stage');
 if(stage){
- let assets=[],view='featured',currentSet=[],lightboxIndex=0;
+ let assets=[],view='all',currentSet=[],lightboxIndex=0;
  const featured=[0,1,4,5,8,9,12,16,22];
  const views={featured:{label:'CURATED SELECTION',pick:a=>a.filter((_,i)=>featured.includes(i))},recent:{label:'2022 COLLECTION',pick:a=>a.filter(x=>x.url.includes('/2022/'))},classic:{label:'2020 COLLECTION',pick:a=>a.filter(x=>x.url.includes('/2020/'))},all:{label:'FULL HOTP ARCHIVE',pick:a=>a}};
  const label=document.querySelector('#portfolio-view-label'),count=document.querySelector('#portfolio-count'),cur=document.querySelector('#carousel-current'),total=document.querySelector('#carousel-total'),bar=document.querySelector('#carousel-progress-bar');
@@ -22,10 +22,17 @@ if(stage){
  }
  assets=fallback;render();
  fetch('data/portfolio.json?rev=4',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{if(d.assets?.length){assets=d.assets;render()}}).catch(()=>{});
- document.querySelector('.portfolio-menu')?.addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;view=b.dataset.view;document.querySelectorAll('.portfolio-tab').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-selected',x===b?'true':'false')});render()});
+ document.querySelector('.portfolio-menu')?.addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;view=b.dataset.view;startAuto();document.querySelectorAll('.portfolio-tab').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-selected',x===b?'true':'false')});render()});
  let raf;stage.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(sync)},{passive:true});
  function move(dir){const card=stage.querySelector('.portfolio-slide');stage.scrollBy({left:dir*((card?.offsetWidth||420)+18),behavior:'smooth'})}
  prev?.addEventListener('click',()=>move(-1));next?.addEventListener('click',()=>move(1));
+ let autoTimer=null,autoPaused=false;
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function autoStep(){if(autoPaused||reduced||dialog?.open)return;const cards=[...stage.querySelectorAll('.portfolio-slide')];if(cards.length<2)return;const max=stage.scrollWidth-stage.clientWidth;if(stage.scrollLeft>=max-12)stage.scrollTo({left:0,behavior:'smooth'});else move(1)}
+ function startAuto(){if(reduced)return;clearInterval(autoTimer);autoTimer=setInterval(autoStep,5200)}
+ function pauseAuto(){autoPaused=true}
+ function resumeAuto(){autoPaused=false;startAuto()}
+ stage.addEventListener('mouseenter',pauseAuto);stage.addEventListener('mouseleave',resumeAuto);stage.addEventListener('focusin',pauseAuto);stage.addEventListener('focusout',resumeAuto);stage.addEventListener('touchstart',pauseAuto,{passive:true});stage.addEventListener('touchend',()=>setTimeout(resumeAuto,1800),{passive:true});document.addEventListener('visibilitychange',()=>document.hidden?pauseAuto():resumeAuto());startAuto();
  let down=false,x=0,left=0;stage.addEventListener('pointerdown',e=>{down=true;x=e.clientX;left=stage.scrollLeft;stage.setPointerCapture(e.pointerId);stage.classList.add('dragging')});stage.addEventListener('pointermove',e=>{if(down)stage.scrollLeft=left-(e.clientX-x)});['pointerup','pointercancel'].forEach(ev=>stage.addEventListener(ev,()=>{down=false;stage.classList.remove('dragging')}));
  function showLightbox(i){lightboxIndex=i;const a=currentSet[i];if(!a||!dialog)return;lightImg.src=a.url;caption.textContent=`HOTP PORTFOLIO · WORK ${String(a.sourceOrder).padStart(2,'0')}`;dialog.showModal()}
  stage.addEventListener('click',e=>{if(Math.abs(stage.scrollLeft-left)>8)return;const b=e.target.closest('[data-index]');if(b)showLightbox(Number(b.dataset.index))});
