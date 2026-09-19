@@ -2,41 +2,44 @@ document.querySelectorAll('[data-quote]').forEach(b=>b.addEventListener('click',
 
 const stage=document.querySelector('#portfolio-stage');
 if(stage){
-  let assets=[],view='featured',page=0,currentVisible=[],lightboxIndex=0;
-  const perPage=12;
+  let assets=[],view='featured',page=0,currentSet=[],lightboxIndex=0;
+  const perPage=9;
+  const featured=[0,1,4,5,8,9,12,16,22];
   const views={
-    featured:{label:'FEATURED SELECTION',pick:a=>a.filter((_,i)=>[0,1,4,5,8,9,12,16,17,22,27,37].includes(i))},
-    recent:{label:'RECENT ARCHIVE · 2022',pick:a=>a.filter(x=>x.url.includes('/2022/'))},
-    classic:{label:'EARLIER ARCHIVE · 2020',pick:a=>a.filter(x=>x.url.includes('/2020/'))},
-    all:{label:'ALL ORIGINAL WORK',pick:a=>a}
+    featured:{label:'CURATED SELECTION',pick:a=>a.filter((_,i)=>featured.includes(i))},
+    recent:{label:'2022 COLLECTION',pick:a=>a.filter(x=>x.url.includes('/2022/'))},
+    classic:{label:'2020 COLLECTION',pick:a=>a.filter(x=>x.url.includes('/2020/'))},
+    all:{label:'FULL HOTP ARCHIVE',pick:a=>a}
   };
   const label=document.querySelector('#portfolio-view-label'),count=document.querySelector('#portfolio-count'),pages=document.querySelector('#portfolio-pages'),prev=document.querySelector('#portfolio-prev'),next=document.querySelector('#portfolio-next');
   const dialog=document.querySelector('#portfolio-lightbox'),lightImg=document.querySelector('#lightbox-image'),caption=document.querySelector('#lightbox-caption');
+  const fallback=[...stage.querySelectorAll('img')].map((img,i)=>({url:img.currentSrc||img.src,sourceOrder:i+1}));
   function selected(){return views[view].pick(assets)}
+  function tile(a,i){const year=a.url.includes('/2022/')?'2022':a.url.includes('/2020/')?'2020':'HOTP';return `<button class="portfolio-tile" type="button" data-index="${i}" style="--delay:${i*38}ms" aria-label="Open HOTP portfolio work ${a.sourceOrder}"><img src="${a.url}" alt="HOTP portfolio work ${a.sourceOrder}" loading="${i<4?'eager':'lazy'}" decoding="async"><span class="tile-shade"></span><span class="tile-meta"><span>HOTP · ${year}</span><b>VIEW ↗</b></span></button>`}
   function render(){
-    const set=selected(),totalPages=Math.max(1,Math.ceil(set.length/perPage));page=Math.min(page,totalPages-1);
-    currentVisible=set.slice(page*perPage,page*perPage+perPage);
-    stage.innerHTML=currentVisible.map((a,i)=>`<button class="portfolio-tile" type="button" data-index="${i}" style="--delay:${i*35}ms"><img src="${a.url}" alt="HOTP portfolio work ${a.sourceOrder}" loading="lazy"><span class="tile-meta"><span>HOTP ARCHIVE · ${a.url.includes('/2022/')?'2022':'2020'}</span><b>↗</b></span></button>`).join('');
-    label.textContent=views[view].label;count.textContent=`${set.length} WORK${set.length===1?'':'S'}`;
+    const set=selected(),totalPages=Math.max(1,Math.ceil(set.length/perPage));page=Math.max(0,Math.min(page,totalPages-1));
+    currentSet=set.slice(page*perPage,page*perPage+perPage);
+    stage.classList.add('is-changing');
+    requestAnimationFrame(()=>{stage.innerHTML=currentSet.map(tile).join('');stage.classList.remove('is-changing')});
+    label.textContent=views[view].label;count.textContent=`${String(set.length).padStart(2,'0')} WORKS · ${String(page+1).padStart(2,'0')}/${String(totalPages).padStart(2,'0')}`;
     pages.innerHTML=Array.from({length:totalPages},(_,i)=>`<button type="button" data-page="${i}" class="${i===page?'active':''}" aria-label="Portfolio page ${i+1}">${String(i+1).padStart(2,'0')}</button>`).join('');
     prev.disabled=page===0;next.disabled=page===totalPages-1;
   }
-  const fallbackAssets=[...stage.querySelectorAll('img')].map((img,i)=>({url:img.src,sourceOrder:i+1}));
-  assets=fallbackAssets;
-  fetch('./data/portfolio.json?v=20260919').then(r=>{if(!r.ok)throw new Error('portfolio data');return r.json()}).then(d=>{if(d.assets?.length){assets=d.assets;render()}}).catch(()=>{render()});
-  document.querySelector('.portfolio-menu').addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;view=b.dataset.view;page=0;document.querySelectorAll('.portfolio-tab').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-selected',x===b?'true':'false')});render()});
-  pages.addEventListener('click',e=>{const b=e.target.closest('[data-page]');if(b){page=+b.dataset.page;render();stage.scrollIntoView({behavior:'smooth',block:'start'})}});
-  prev.addEventListener('click',()=>{if(page){page--;render()}});
-  next.addEventListener('click',()=>{if((page+1)*perPage<selected().length){page++;render()}});
-  function showLightbox(i){lightboxIndex=i;const a=currentVisible[i];if(!a)return;lightImg.src=a.url;caption.textContent=`HOTP PORTFOLIO · WORK ${String(a.sourceOrder).padStart(2,'0')}`;dialog.showModal()}
-  stage.addEventListener('click',e=>{const b=e.target.closest('[data-index]');if(b)showLightbox(+b.dataset.index)});
-  dialog.querySelector('.lightbox-close').addEventListener('click',()=>dialog.close());
-  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
-  dialog.querySelector('.next').addEventListener('click',()=>showLightbox((lightboxIndex+1)%currentVisible.length));
-  dialog.querySelector('.prev').addEventListener('click',()=>showLightbox((lightboxIndex-1+currentVisible.length)%currentVisible.length));
-  document.addEventListener('keydown',e=>{if(!dialog.open)return;if(e.key==='ArrowRight')dialog.querySelector('.next').click();if(e.key==='ArrowLeft')dialog.querySelector('.prev').click()});
+  assets=fallback; render();
+  fetch('data/portfolio.json?rev=3',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>{if(Array.isArray(d.assets)&&d.assets.length){assets=d.assets;page=0;render()}}).catch(()=>{});
+  const menu=document.querySelector('.portfolio-menu');
+  menu?.addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;view=b.dataset.view;page=0;menu.querySelectorAll('.portfolio-tab').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-selected',x===b?'true':'false')});render()});
+  pages?.addEventListener('click',e=>{const b=e.target.closest('[data-page]');if(!b)return;page=Number(b.dataset.page);render();stage.scrollIntoView({behavior:'smooth',block:'start'})});
+  prev?.addEventListener('click',()=>{if(page>0){page--;render()}});
+  next?.addEventListener('click',()=>{if((page+1)*perPage<selected().length){page++;render()}});
+  function showLightbox(i){lightboxIndex=i;const a=currentSet[i];if(!a||!dialog)return;lightImg.src=a.url;caption.textContent=`HOTP PORTFOLIO · WORK ${String(a.sourceOrder).padStart(2,'0')}`;dialog.showModal()}
+  stage.addEventListener('click',e=>{const b=e.target.closest('[data-index]');if(b)showLightbox(Number(b.dataset.index))});
+  dialog?.querySelector('.lightbox-close')?.addEventListener('click',()=>dialog.close());
+  dialog?.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+  dialog?.querySelector('.next')?.addEventListener('click',()=>showLightbox((lightboxIndex+1)%currentSet.length));
+  dialog?.querySelector('.prev')?.addEventListener('click',()=>showLightbox((lightboxIndex-1+currentSet.length)%currentSet.length));
+  document.addEventListener('keydown',e=>{if(!dialog?.open)return;if(e.key==='ArrowRight')showLightbox((lightboxIndex+1)%currentSet.length);if(e.key==='ArrowLeft')showLightbox((lightboxIndex-1+currentSet.length)%currentSet.length)});
 }
-
 document.querySelector('.price-category-menu')?.addEventListener('click',e=>{const b=e.target.closest('[data-price-category]');if(!b)return;const id=b.dataset.priceCategory;document.querySelectorAll('.price-category').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.price-detail').forEach(x=>x.classList.toggle('active',x.dataset.pricePanel===id));});
 
 const rateResults=document.querySelector('#rate-results');
