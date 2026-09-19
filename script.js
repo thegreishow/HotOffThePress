@@ -9,6 +9,7 @@ async function loadHOTPData(){
     );
     hotpData={business,services,portfolio,pricing};
     renderServices();
+    renderProductExplorer();
     renderPortfolio();
     renderPricingSnapshot();
     hydrateQuoteProducts();
@@ -30,6 +31,34 @@ function renderServices(){
       <div class="service-visual custom-visual"><span class="plus">${String(i+1).padStart(2,'0')}</span></div>
       <div class="service-meta"><span>REAL SERVICE CATEGORY</span><h3>${c.name}</h3><p>${serviceSummary(c)}</p><small class="service-note">${c.items.length} listed services/products</small></div>
     </article>`).join('');
+}
+const quoteProductMap={
+  'Business Cards':'Business Cards','Full Colour':'Full Colour Copying','Black & White':'Black & White Copying',
+  'Scanning':'Scanning','Press Kits':'Press Kits','Architectural Plans':'Custom Job','T-Shirts':'Heat Transfers',
+  'Caps':'Heat Transfers','Mouse Pads':'Heat Transfers','Coil':'Wire & Coil Binding','Spiral':'Spiral Binding',
+  'Wire':'Wire & Coil Binding','Posters':'Large Format Printing','Banners':'Large Format Printing',
+  'Vinyl':'Large Format Printing','Adhesive Vinyl (Die Cut)':'Large Format Printing','Backlit':'Large Format Printing',
+  'Laminating':'Large Format Laminating','Mounting':'Mounting'
+};
+function openQuoteFor(product){
+  modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+  const select=document.querySelector('#quote-product'),mapped=quoteProductMap[product]||'Custom Job';
+  if(select&&[...select.options].some(o=>o.value===mapped)){select.value=mapped;renderDynamicQuoteFields()}
+}
+function renderProductExplorer(){
+  const services=hotpData.services?.categories||[],quick=document.querySelector('#quick-products'),results=document.querySelector('#service-search-results'),search=document.querySelector('#service-search'),count=document.querySelector('#explorer-count');
+  if(!quick||!results||!search)return;
+  const items=services.flatMap(c=>c.items.map(name=>({name,category:c.name})));
+  const featured=['Business Cards','Full Colour','Black & White','Posters','Banners','T-Shirts','Spiral','Scanning'];
+  quick.innerHTML=featured.filter(n=>items.some(i=>i.name===n)).map(n=>`<button type="button" data-product="${n}">${n}<span>↗</span></button>`).join('');
+  count.textContent=`${items.length} services & products`;
+  const paint=q=>{
+    const term=q.trim().toLowerCase();if(!term){results.hidden=true;results.innerHTML='';return}
+    const matches=items.filter(i=>(i.name+' '+i.category).toLowerCase().includes(term)).slice(0,12);
+    results.hidden=false;results.innerHTML=matches.length?matches.map(i=>`<button type="button" data-product="${i.name}"><span><strong>${i.name}</strong><small>${i.category}</small></span><b>Configure →</b></button>`).join(''):'<div class="no-results"><strong>No exact match.</strong><span>Start a custom quote and tell HOTP what you need.</span><button type="button" data-product="Custom Job">Custom quote →</button></div>';
+  };
+  search.addEventListener('input',e=>paint(e.target.value));
+  [quick,results].forEach(el=>el.addEventListener('click',e=>{const btn=e.target.closest('[data-product]');if(btn)openQuoteFor(btn.dataset.product)}));
 }
 function renderPortfolio(){
   const grid=document.querySelector('#portfolio-grid');
