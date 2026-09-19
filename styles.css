@@ -337,3 +337,8 @@ button{cursor:pointer}
 .future-steps{display:grid;grid-template-columns:auto 1fr auto 1fr auto 1fr auto;align-items:center;gap:8px;font:700 9px "Space Grotesk",sans-serif;letter-spacing:.06em}.future-steps i{height:1px;background:#bbb}.future-steps .done,.future-steps .active{color:#111}.future-steps .active{background:#ffd800;padding:6px 8px}.future-meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}.future-meta>div{border-top:1px solid #cfcac0;padding-top:12px}.future-meta small{display:block;font-size:9px;letter-spacing:.1em;color:#777;margin-bottom:5px}.future-meta strong{font-size:13px}
 @media(max-width:760px){.future-preview-grid{grid-template-columns:1fr;gap:34px}.future-card{box-shadow:8px 8px 0 #ff2f87}.future-steps{grid-template-columns:1fr;align-items:start}.future-steps i{display:none}.capability-track{animation-duration:34s}}
 @media(prefers-reduced-motion:reduce){.capability-track{animation:none}}
+
+/* Homepage resilience: content remains visible even if enhancement JS is delayed or blocked */
+.reveal{opacity:1;transform:none}
+.reveal.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:no-preference){html.js-ready .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}html.js-ready .reveal.visible{opacity:1;transform:none}}
