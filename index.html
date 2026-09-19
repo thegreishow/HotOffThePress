@@ -405,100 +405,15 @@
 
       <form id="quote-form" class="quote-form">
         <div class="field-grid">
-          <label>
-            <span>Product</span>
-            <select name="product" id="quote-product">
-              <option>Business Cards</option>
-              <option>Letterheads / Press Kits</option>
-              <option>Invitations / Certificates / Programmes</option>
-              <option>Flyers / Posters</option>
-              <option>Banners / Large Format</option>
-              <option>Architectural Plans</option>
-              <option>Vinyl / Adhesive Vinyl</option>
-              <option>Stickers / Labels</option>
-              <option>T-Shirts / Heat Transfer</option>
-              <option>Caps / Mouse Pads</option>
-              <option>Documents / Copying</option>
-              <option>Spiral / Wire / Coil Binding</option>
-              <option>Laminating / Mounting / Framing</option>
-              <option>Custom Job</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Quantity</span>
-            <input type="number" name="quantity" value="500" min="1" />
-          </label>
-
-          <label>
-            <span>Size</span>
-            <select name="size">
-              <option>Standard</option>
-              <option>A5</option>
-              <option>A4</option>
-              <option>A3</option>
-              <option>Custom size</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Colour</span>
-            <select name="colour">
-              <option>Full colour</option>
-              <option>Black & white</option>
-              <option>Mixed</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Finish</span>
-            <select name="finish">
-              <option>Standard</option>
-              <option>Matte</option>
-              <option>Gloss</option>
-              <option>Fold / Bind</option>
-              <option>Custom finishing</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Artwork</span>
-            <select name="artwork">
-              <option>Artwork is ready</option>
-              <option>I need design help</option>
-              <option>I need edits to existing artwork</option>
-            </select>
-          </label>
-
-          <label>
-            <span>Turnaround</span>
-            <select name="turnaround">
-              <option>Standard / confirm timing</option>
-              <option>Urgent / earliest available</option>
-              <option>Specific deadline</option>
-            </select>
-          </label>
-
-          <label class="upload-field">
-            <span>Artwork file</span>
-            <input type="file" name="file" />
-            <small>Demo upload interface — file is not transmitted.</small>
-          </label>
+          <label><span>Product</span><select name="product" id="quote-product"></select></label>
+          <label><span>Quantity</span><input type="number" name="quantity" value="100" min="1" /></label>
+          <div id="dynamic-quote-fields" class="dynamic-fields"></div>
+          <label><span>Artwork</span><select name="artwork"><option>Artwork is ready</option><option>I need design help</option><option>I need edits to existing artwork</option></select></label>
+          <label><span>Turnaround</span><select name="turnaround"><option>Standard / confirm timing</option><option>Urgent / earliest available</option><option>Specific deadline</option></select></label>
+          <label class="upload-field"><span>Artwork file</span><input type="file" name="file" /><small>Demo upload interface — file is not transmitted.</small></label>
         </div>
-
-        <label class="full-field">
-          <span>Job notes</span>
-          <textarea name="notes" rows="4" placeholder="Dimensions, stock, finishing, deadline, delivery or anything else we should know..."></textarea>
-        </label>
-
-        <div class="quote-summary" id="quote-live-estimate">
-          <div>
-            <span>ESTIMATE</span>
-            <strong>Requires HOTP confirmation</strong>
-          </div>
-          <p>Final price depends on production specifications, material availability and current pricing.</p>
-        </div>
-
+        <label class="full-field"><span>Job notes</span><textarea name="notes" rows="4" placeholder="Dimensions, stock, finishing, deadline, delivery or anything else we should know..."></textarea></label>
+        <div class="quote-summary" id="quote-live-estimate"><div><span>ESTIMATE</span><strong>Choose a product</strong></div><p>Published pricing is calculated only when the catalogue provides a deterministic rule.</p></div>
         <button type="submit" class="btn btn-black btn-large full-button">Generate Quote Summary</button>
       </form>
 
