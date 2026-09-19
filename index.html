@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?rev=12" />
+  <link rel="stylesheet" href="styles.css?rev=13" />
 </head>
 <body>
   <div class="demo-badge">REDESIGN CONCEPT DEMO</div>
@@ -92,7 +92,34 @@
       <div class="service-grid">
         <a class="service-card reveal" href="services.html"><div class="real-work-image service-photo"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-122.png" alt="HOTP print production work"></div><div class="service-meta"><span>01</span><h3>Services</h3><p>Explore printing, large format, heat transfer, binding and finishing.</p></div></a>
         <a class="service-card reveal" href="portfolio.html"><div class="real-work-image"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-115-1.png" alt="HOTP portfolio work"></div><div class="service-meta"><span>02</span><h3>Portfolio</h3><p>See real production work from HOTP’s existing public portfolio.</p></div></a>
-        <a class="service-card reveal" href="#work"><div class="real-work-image"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-78-2.png" alt="Selected HOTP output"></div><div class="service-meta"><span>03</span><h3>Selected Output</h3><p>See a moving selection of real work from HOTP’s portfolio archive.</p></div></a><a class="service-card reveal" href="#pricing"><div class="service-visual banner-visual"><div class="banner-copy">PRICE<br>IT.</div></div><div class="service-meta"><span>04</span><h3>Current Price Guide</h3><p>Check published rates and prepare the details for your job.</p></div></a>
+        <a class="service-card reveal" href="pricing.html"><div class="service-visual banner-visual"><div class="banner-copy">PRICE<br>IT.</div></div><div class="service-meta"><span>03</span><h3>Pricing</h3><p>Browse published rates and prepare a print job.</p></div></a>
+      </div>
+    </section>
+
+    <section id="work" class="section portfolio-section home-work"><div class="shell"><div class="section-heading reveal"><div><span class="eyebrow dark">SELECTED OUTPUT</span><h2>Real work. Real HOTP.</h2></div></div></div><div class="home-carousel-wrap reveal"><button class="home-carousel-arrow prev" type="button" aria-label="Previous work">←</button><div class="home-carousel" id="home-carousel"><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-78-2.png" alt="HOTP portfolio work"></button><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2020/11/Group-133.png" alt="HOTP portfolio work"></button><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-116-1.png" alt="HOTP portfolio work"></button><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2020/11/Group-134.png" alt="HOTP portfolio work"></button><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-119.png" alt="HOTP portfolio work"></button><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-125.png" alt="HOTP portfolio work"></button></div><button class="home-carousel-arrow next" type="button" aria-label="Next work">→</button></div><div class="shell"><div class="portfolio-proof reveal"><div><strong>45 ORIGINAL PORTFOLIO ASSETS CATALOGUED</strong><span>Drag or swipe the selection, or enter the complete archive.</span></div><a class="text-link dark-link" href="portfolio.html">Explore portfolio →</a></div></div></section>
+
+    <section id="pricing" class="pricing section-dark">
+      <div class="shell pricing-grid">
+        <div class="reveal">
+          <span class="eyebrow">CURRENT PRICE GUIDE</span>
+          <h2>Check pricing. Then send the job.</h2>
+          <p class="pricing-copy">HOTP’s current price list is effective September 22, 2025. Use the official guide for published rates, or build a job request and have the team confirm the final production cost.</p>
+          <div class="pricing-actions">
+            <button class="btn btn-primary btn-large" data-open-quote>Build a Quote</button>
+            <a class="btn btn-ghost btn-large" href="https://hotpjamaica.com/wp-content/uploads/2025/10/Price_List_Brochure_tabloid_2025.pdf" target="_blank" rel="noopener">View 2025 Price Guide</a>
+          </div>
+        </div>
+        <div class="price-ui reveal" id="pricing-snapshot">
+          <div class="price-ui-head"><span>PUBLISHED RATE SNAPSHOT</span><span>SEP 2025</span></div>
+          <div class="price-row"><span>Colour Copy · Letter · 1–24</span><strong>J$100 ea.</strong></div>
+          <div class="price-row"><span>B&W Copy · Letter · 1–1000</span><strong>J$10 ea.</strong></div>
+          <div class="price-row"><span>Business Cards · 100 · single side</span><strong>J$2,369 incl. tax</strong></div>
+          <div class="price-row"><span>Business Cards · 500 · single side</span><strong>J$7,015 incl. tax</strong></div>
+          <div class="price-row"><span>Spiral Binding · 1–100 pages</span><strong>J$205</strong></div>
+          <div class="price-row"><span>Retractable Banner Kit · 33×82</span><strong>J$15,000</strong></div>
+          <div class="price-row"><span>Press Kit · 13×19 · single side · 25+</span><strong>J$500 ea.</strong></div>
+          <div class="price-total"><span>OFFICIAL GUIDE</span><strong>Effective Sep. 22, 2025</strong></div>
+        </div>
       </div>
     </section>
 
@@ -149,8 +176,6 @@
       </div>
     </section>
 
-    <section id="work" class="section portfolio-section home-work"><div class="shell"><div class="section-heading reveal"><div><span class="eyebrow dark">SELECTED OUTPUT</span><h2>Real work. Real HOTP.</h2></div></div></div><div class="home-carousel-wrap reveal"><button class="home-carousel-arrow prev" type="button" aria-label="Previous work">←</button><div class="home-carousel" id="home-carousel"><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-78-2.png" alt="HOTP portfolio work"></button><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2020/11/Group-133.png" alt="HOTP portfolio work"></button><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-116-1.png" alt="HOTP portfolio work"></button><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2020/11/Group-134.png" alt="HOTP portfolio work"></button><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-119.png" alt="HOTP portfolio work"></button><button class="home-work-slide" type="button"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-125.png" alt="HOTP portfolio work"></button></div><button class="home-carousel-arrow next" type="button" aria-label="Next work">→</button></div><div class="shell"><div class="portfolio-proof reveal"><div><strong>45 ORIGINAL PORTFOLIO ASSETS CATALOGUED</strong><span>Drag or swipe the selection, or enter the complete archive.</span></div><a class="text-link dark-link" href="portfolio.html">Explore portfolio →</a></div></div></section>
-
     <section id="about" class="about section production-showcase">
       <div class="shell about-grid">
         <div class="about-copy reveal">
@@ -166,31 +191,6 @@
           <div class="stat-card cyan"><strong>40+</strong><span>people behind<br>the output</span></div>
           <div class="stat-card magenta"><strong>15+</strong><span>graphic artists &<br>service reps</span></div>
           <div class="stat-card yellow"><strong>1</strong><span>production partner<br>for the whole job</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="pricing" class="pricing section-dark">
-      <div class="shell pricing-grid">
-        <div class="reveal">
-          <span class="eyebrow">CURRENT PRICE GUIDE</span>
-          <h2>Check pricing. Then send the job.</h2>
-          <p class="pricing-copy">HOTP’s current price list is effective September 22, 2025. Use the official guide for published rates, or build a job request and have the team confirm the final production cost.</p>
-          <div class="pricing-actions">
-            <button class="btn btn-primary btn-large" data-open-quote>Build a Quote</button>
-            <a class="btn btn-ghost btn-large" href="https://hotpjamaica.com/wp-content/uploads/2025/10/Price_List_Brochure_tabloid_2025.pdf" target="_blank" rel="noopener">View 2025 Price Guide</a>
-          </div>
-        </div>
-        <div class="price-ui reveal" id="pricing-snapshot">
-          <div class="price-ui-head"><span>PUBLISHED RATE SNAPSHOT</span><span>SEP 2025</span></div>
-          <div class="price-row"><span>Colour Copy · Letter · 1–24</span><strong>J$100 ea.</strong></div>
-          <div class="price-row"><span>B&W Copy · Letter · 1–1000</span><strong>J$10 ea.</strong></div>
-          <div class="price-row"><span>Business Cards · 100 · single side</span><strong>J$2,369 incl. tax</strong></div>
-          <div class="price-row"><span>Business Cards · 500 · single side</span><strong>J$7,015 incl. tax</strong></div>
-          <div class="price-row"><span>Spiral Binding · 1–100 pages</span><strong>J$205</strong></div>
-          <div class="price-row"><span>Retractable Banner Kit · 33×82</span><strong>J$15,000</strong></div>
-          <div class="price-row"><span>Press Kit · 13×19 · single side · 25+</span><strong>J$500 ea.</strong></div>
-          <div class="price-total"><span>OFFICIAL GUIDE</span><strong>Effective Sep. 22, 2025</strong></div>
         </div>
       </div>
     </section>
@@ -312,6 +312,6 @@
     </div>
   </div>
 
-  <script src="script.js?rev=11" defer></script>
+  <script src="script.js?rev=13" defer></script>
 </body>
 </html>
