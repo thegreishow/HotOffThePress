@@ -28,7 +28,7 @@ if(stage){
  prev?.addEventListener('click',()=>move(-1));next?.addEventListener('click',()=>move(1));
  let autoFrame=null,autoPaused=false,lastAutoTime=0,autoPosition=0;
  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- const AUTO_SPEED=56;
+ const AUTO_SPEED=112;
  function autoLoop(now){
    if(!lastAutoTime){lastAutoTime=now;autoPosition=stage.scrollLeft}
    const dt=Math.min((now-lastAutoTime)/1000,.05);lastAutoTime=now;
