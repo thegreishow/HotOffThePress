@@ -22,17 +22,26 @@ if(stage){
  }
  assets=fallback;render();
  fetch('data/portfolio.json?rev=4',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{if(d.assets?.length){assets=d.assets;render()}}).catch(()=>{});
- document.querySelector('.portfolio-menu')?.addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;view=b.dataset.view;startAuto();document.querySelectorAll('.portfolio-tab').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-selected',x===b?'true':'false')});render()});
+ document.querySelector('.portfolio-menu')?.addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;view=b.dataset.view;document.querySelectorAll('.portfolio-tab').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-selected',x===b?'true':'false')});render()});
  let raf;stage.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(sync)},{passive:true});
  function move(dir){const card=stage.querySelector('.portfolio-slide');stage.scrollBy({left:dir*((card?.offsetWidth||420)+18),behavior:'smooth'})}
  prev?.addEventListener('click',()=>move(-1));next?.addEventListener('click',()=>move(1));
- let autoTimer=null,autoPaused=false;
+ let autoFrame=null,autoPaused=false,lastAutoTime=0;
  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- function autoStep(){if(autoPaused||reduced||dialog?.open)return;const cards=[...stage.querySelectorAll('.portfolio-slide')];if(cards.length<2)return;const max=stage.scrollWidth-stage.clientWidth;if(stage.scrollLeft>=max-12)stage.scrollTo({left:0,behavior:'smooth'});else move(1)}
- function startAuto(){if(reduced)return;clearInterval(autoTimer);autoTimer=setInterval(autoStep,5200)}
+ const AUTO_SPEED=18;
+ function autoLoop(now){
+   if(!lastAutoTime)lastAutoTime=now;
+   const dt=Math.min((now-lastAutoTime)/1000,.05);lastAutoTime=now;
+   if(!autoPaused&&!reduced&&!dialog?.open&&stage.scrollWidth>stage.clientWidth){
+     const max=stage.scrollWidth-stage.clientWidth;
+     if(stage.scrollLeft>=max-1){stage.scrollLeft=0}else{stage.scrollLeft=Math.min(max,stage.scrollLeft+AUTO_SPEED*dt)}
+   }
+   autoFrame=requestAnimationFrame(autoLoop);
+ }
+ function startAuto(){if(reduced||autoFrame)return;lastAutoTime=0;autoFrame=requestAnimationFrame(autoLoop)}
  function pauseAuto(){autoPaused=true}
- function resumeAuto(){autoPaused=false;startAuto()}
- stage.addEventListener('mouseenter',pauseAuto);stage.addEventListener('mouseleave',resumeAuto);stage.addEventListener('focusin',pauseAuto);stage.addEventListener('focusout',resumeAuto);stage.addEventListener('touchstart',pauseAuto,{passive:true});stage.addEventListener('touchend',()=>setTimeout(resumeAuto,1800),{passive:true});document.addEventListener('visibilitychange',()=>document.hidden?pauseAuto():resumeAuto());startAuto();
+ function resumeAuto(){autoPaused=false;lastAutoTime=performance.now();startAuto()}
+ stage.addEventListener('mouseenter',pauseAuto);stage.addEventListener('mouseleave',resumeAuto);stage.addEventListener('focusin',pauseAuto);stage.addEventListener('focusout',resumeAuto);stage.addEventListener('touchstart',pauseAuto,{passive:true});stage.addEventListener('touchend',()=>setTimeout(resumeAuto,1200),{passive:true});document.addEventListener('visibilitychange',()=>document.hidden?pauseAuto():resumeAuto());startAuto();
  let down=false,x=0,left=0;stage.addEventListener('pointerdown',e=>{down=true;x=e.clientX;left=stage.scrollLeft;stage.setPointerCapture(e.pointerId);stage.classList.add('dragging')});stage.addEventListener('pointermove',e=>{if(down)stage.scrollLeft=left-(e.clientX-x)});['pointerup','pointercancel'].forEach(ev=>stage.addEventListener(ev,()=>{down=false;stage.classList.remove('dragging')}));
  function showLightbox(i){lightboxIndex=i;const a=currentSet[i];if(!a||!dialog)return;lightImg.src=a.url;caption.textContent=`HOTP PORTFOLIO · WORK ${String(a.sourceOrder).padStart(2,'0')}`;dialog.showModal()}
  stage.addEventListener('click',e=>{if(Math.abs(stage.scrollLeft-left)>8)return;const b=e.target.closest('[data-index]');if(b)showLightbox(Number(b.dataset.index))});
