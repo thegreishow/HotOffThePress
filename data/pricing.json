@@ -132,6 +132,492 @@
       },
       "mousePad": 1500,
       "whiteTShirt": 650
+    },
+    "scanning": {
+      "colour": {
+        "upTo5x7": 175,
+        "letter": 280,
+        "tabloid": 400
+      },
+      "bw": {
+        "upTo5x7": 150,
+        "letter": 175,
+        "tabloid": 200
+      },
+      "ocrPerPage": {
+        "letter": 100,
+        "legal": 140,
+        "tabloid": 200
+      },
+      "pdfScanPerPage": 2,
+      "pdfScanMinimum": 100
+    },
+    "paperPerSheet": {
+      "colouredPaper": {
+        "letter": 10,
+        "legal": 15,
+        "tabloid": 20
+      },
+      "colouredCard": {
+        "letter": 20,
+        "legal": 30,
+        "tabloid": 40
+      },
+      "premiumPaper": {
+        "letter": 16,
+        "legal": 24,
+        "tabloid": 32
+      },
+      "premiumCard": {
+        "letter": 30,
+        "legal": 45,
+        "tabloid": 60
+      },
+      "linenLaidCard": {
+        "letter": 30,
+        "legal": 45,
+        "tabloid": 60
+      },
+      "matteCard": {
+        "letter": 16,
+        "legal": 24,
+        "tabloid": 32
+      },
+      "glossyPaper": {
+        "letter": 13,
+        "legal": 20,
+        "tabloid": 26
+      },
+      "glossyCard": {
+        "letter": 16,
+        "legal": 24,
+        "tabloid": 32
+      },
+      "crackPeel": {
+        "letter": 55,
+        "legal": 88,
+        "tabloid": 110
+      },
+      "vellum": {
+        "letter": 95,
+        "legal": 145,
+        "tabloid": 190
+      },
+      "cougarCard": {
+        "letter": 25,
+        "legal": 38,
+        "tabloid": 50
+      },
+      "pearl": {
+        "letter": 75,
+        "legal": 115,
+        "tabloid": 150
+      },
+      "sixtyLbOffset": {
+        "letter": 3.5,
+        "legal": 5,
+        "tabloid": 7
+      },
+      "laid": {
+        "letter": 8,
+        "legal": 12,
+        "tabloid": 16
+      },
+      "lxPaper": {
+        "letter": 8,
+        "legal": 12,
+        "tabloid": 16
+      },
+      "transparencies": {
+        "letter": 125,
+        "tabloid": 250
+      },
+      "separatorPaper": {
+        "letter": 5,
+        "legal": 7,
+        "tabloid": 10
+      },
+      "carbonizedPaper": {
+        "letter": 7.5,
+        "legal": 12,
+        "tabloid": 15
+      }
+    },
+    "artworkDesign": {
+      "hourly": 6000,
+      "minimum": 2000
+    },
+    "laminatingPouches": {
+      "letter": {
+        "m003": 100,
+        "m005": 120,
+        "m010": 170
+      },
+      "legal": {
+        "m003": 135,
+        "m005": 165,
+        "m010": 260
+      },
+      "tabloid": {
+        "m003": 200,
+        "m005": 240,
+        "m010": 340
+      },
+      "idPouches": 65,
+      "idClips": 90,
+      "idHolders": 35
+    },
+    "easels": {
+      "12": {
+        "doubleWing": 800
+      },
+      "18": {
+        "doubleWing": 1100
+      },
+      "24": {
+        "doubleWing": 1650
+      },
+      "36": {
+        "doubleWing": 2200
+      },
+      "6or7": {
+        "singleWing": 200,
+        "doubleWing": 290
+      },
+      "9or10": {
+        "singleWing": 250,
+        "doubleWing": 380
+      }
+    },
+    "finishing": {
+      "singleHolePunchEach": 2.5,
+      "cornerRoundingEachCard": 2.5,
+      "plasticFramingPerFt": 340,
+      "doubleSidedTapePerSqFt": 275,
+      "applyingStickersEach": 30,
+      "staplingPerStaple": 3.5,
+      "cutting": {
+        "setup": 400,
+        "maxCuts": 5
+      },
+      "collatingPerSheet": 2,
+      "stitchFold": {
+        "setup": 900,
+        "perDocument": 25
+      },
+      "folding": {
+        "setup": 900,
+        "perSheet": 3.5
+      },
+      "perfing": {
+        "setup": 900,
+        "perPerf": 3.5
+      },
+      "scoring": {
+        "setup": 900,
+        "perScore": 3.5
+      },
+      "tentCardAssembly": 70,
+      "notepadAssembly": 100,
+      "wobblerAssembly": 80,
+      "fanProgrammeAssembly": {
+        "upTo5x8": 200,
+        "upTo8x10_5": 275
+      }
+    },
+    "accessories": {
+      "suctionCupHook": 70,
+      "fudgeSticks": 45,
+      "rivetsHoleRibbon": 45,
+      "rivetsNoHole": 70,
+      "lanyards": 120,
+      "pictureHooks": 90,
+      "grommets": 85,
+      "velcroPerFoot": 550,
+      "dividersPack": 110,
+      "tabs1to5Pack": 180,
+      "tabs6to10Pack": 180,
+      "tabs1to31Pack": 1200
+    },
+    "burning": {
+      "cd": 250,
+      "dvd": 350
+    },
+    "largeFormatLaminatingPerSqFt": {
+      "singleSide": {
+        "mm3": 140,
+        "mm5": 210,
+        "mm10": 350
+      },
+      "encapsulated": {
+        "mm3": 280,
+        "mm5": 420,
+        "mm10": 700
+      },
+      "coldMultiplier": 1.5
+    },
+    "largeFormatBW": {
+      "copying": {
+        "minimumSqFt": 3,
+        "minimumPrice": 330,
+        "additionalPerSqFt": 110
+      },
+      "printing": {
+        "minimumSqFt": 3,
+        "minimumPrice": 375,
+        "additionalPerSqFt": 125,
+        "vellumAdditionalPerSqFt": 70
+      }
+    },
+    "largeFormatScanning": {
+      "bw": {
+        "under2x3": 500,
+        "over2x3PerSqFt": 75
+      },
+      "colour": {
+        "perSqFt": 300
+      }
+    },
+    "mountingPerSqFt": {
+      "cardStock": 350,
+      "foamBoard3_8": 550,
+      "coroplast": 500,
+      "sintra": 900,
+      "gatorBoard": 1100,
+      "chipBoard": 400,
+      "magnet": 1250,
+      "aluminum1_8": 1350
+    },
+    "carbonatedReceiptBooks": {
+      "duplicate": {
+        "50": 3840,
+        "100": 6880,
+        "200": 12420,
+        "250": 15460,
+        "500": 29580,
+        "750": 43700,
+        "1000": 58360,
+        "1500": 86600,
+        "2000": 115380,
+        "2500": 144160,
+        "5000": 286980
+      },
+      "triplicate": {
+        "50": 5165,
+        "100": 9530,
+        "200": 18260,
+        "250": 22625,
+        "500": 44450,
+        "750": 66275,
+        "1000": 88100,
+        "1500": 131750,
+        "2000": 175400,
+        "2500": 219050,
+        "5000": 437300
+      }
+    },
+    "transfers": {
+      "letterAdditionalPerCopyPrint": 160,
+      "tabloidAdditionalPerCopyPrint": 320,
+      "pressEach": 140,
+      "backFrontSecondSidePress": 70
+    },
+    "largeFormatTransferPerSqFt": {
+      "standardColours": 1700,
+      "glitterGold": 2000,
+      "minimumDimensions": "11×17"
+    },
+    "opaqueTransfer": {
+      "letter": 525,
+      "tabloid": 650
+    },
+    "programmes": {
+      "colour": {
+        "4": {
+          "50": 9075,
+          "100": 17250,
+          "150": 25425,
+          "200": 33600,
+          "250": 41775,
+          "300": 49950,
+          "400": 66300,
+          "500": 82650,
+          "600": 99000,
+          "800": 131700,
+          "1000": 164400
+        },
+        "8": {
+          "50": 11150,
+          "100": 21400,
+          "150": 31650,
+          "200": 41900,
+          "250": 52150,
+          "300": 62400,
+          "400": 82900,
+          "500": 102900,
+          "600": 123300,
+          "800": 164100,
+          "1000": 204900
+        },
+        "12": {
+          "50": 12150,
+          "100": 23400,
+          "150": 34650,
+          "200": 45900,
+          "250": 56650,
+          "300": 67800,
+          "400": 90100,
+          "500": 112400,
+          "600": 134700,
+          "800": 179300,
+          "1000": 223900
+        },
+        "16": {
+          "50": 13150,
+          "100": 25400,
+          "150": 37650,
+          "200": 49300,
+          "250": 61400,
+          "300": 73500,
+          "400": 97700,
+          "500": 121900,
+          "600": 146100,
+          "800": 194500,
+          "1000": 242900
+        },
+        "20": {
+          "50": 14150,
+          "100": 27400,
+          "150": 40650,
+          "200": 53100,
+          "250": 66150,
+          "300": 79200,
+          "400": 105300,
+          "500": 131400,
+          "600": 157500,
+          "800": 209700,
+          "1000": 261900
+        }
+      },
+      "bw": {
+        "4": {
+          "50": 6825,
+          "100": 12750,
+          "150": 18675,
+          "200": 24600,
+          "250": 30525,
+          "300": 36450,
+          "400": 48300,
+          "500": 60150,
+          "600": 72000,
+          "800": 95700,
+          "1000": 119400
+        },
+        "8": {
+          "50": 8900,
+          "100": 16900,
+          "150": 24900,
+          "200": 32900,
+          "250": 40900,
+          "300": 48900,
+          "400": 64900,
+          "500": 80400,
+          "600": 96300,
+          "800": 128100,
+          "1000": 159900
+        },
+        "12": {
+          "50": 9900,
+          "100": 18900,
+          "150": 27900,
+          "200": 36900,
+          "250": 45400,
+          "300": 54300,
+          "400": 72100,
+          "500": 89900,
+          "600": 107700,
+          "800": 143300,
+          "1000": 178900
+        },
+        "16": {
+          "50": 10900,
+          "100": 20900,
+          "150": 30900,
+          "200": 40900,
+          "250": 50150,
+          "300": 60000,
+          "400": 79700,
+          "500": 99400,
+          "600": 119100,
+          "800": 158500,
+          "1000": 197900
+        },
+        "20": {
+          "50": 11900,
+          "100": 22900,
+          "150": 33900,
+          "200": 44100,
+          "250": 54900,
+          "300": 65700,
+          "400": 87300,
+          "500": 108900,
+          "600": 130500,
+          "800": 173300,
+          "1000": 216900
+        }
+      },
+      "premiumPaperAddPerProgramme": {
+        "4": 5,
+        "8": 20,
+        "12": 40,
+        "16": 55
+      },
+      "straddleFoldStapleAddPerProgramme": 40,
+      "colourCollate": {
+        "setupPerProgramme": 900,
+        "jobSetup": 5000
+      },
+      "designLayout": {
+        "4": 6000,
+        "8": 10000,
+        "12": 13000,
+        "16": 18000
+      },
+      "bookmarkersDesign": 3000
+    },
+    "laminatedProducts": {
+      "bookmarkers": {
+        "minOrder": 50,
+        "singleSide": {
+          "50-99": 70,
+          "100-249": 65,
+          "250+": 60
+        },
+        "backFront": {
+          "50-99": 95,
+          "100-249": 85,
+          "250+": 75
+        }
+      },
+      "prayerCards": {
+        "minOrder": 6,
+        "singleSide": {
+          "6+": 65
+        },
+        "backFront": {
+          "6+": 85
+        }
+      },
+      "businessCards": {
+        "singleSide": {
+          "100-499": 40,
+          "500+": 35
+        },
+        "backFront": {
+          "100-499": 45,
+          "500+": 45
+        }
+      }
     }
   },
   "manualQuote": [
@@ -158,6 +644,22 @@
     {
       "product": "Urgent turnaround",
       "reason": "Availability and production timing require HOTP confirmation."
+    },
+    {
+      "product": "Programmes with non-standard combinations",
+      "reason": "Published matrices cover fixed quantities/page counts; premium paper, stapling, collating and layout are separate add-ons."
+    },
+    {
+      "product": "Large-format dimensions not supplied",
+      "reason": "Per-square-foot pricing requires final width and height."
+    },
+    {
+      "product": "Mounting without final substrate/size",
+      "reason": "Published mounting rates are substrate- and area-dependent."
+    },
+    {
+      "product": "Receipt books with custom finishing",
+      "reason": "Published base matrices exclude some extras such as numbering, perfing, cover page and binding."
     }
   ]
 }
