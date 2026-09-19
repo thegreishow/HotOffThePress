@@ -62,7 +62,12 @@ if(rateResults){
 }
 
 /* Shared navigation + service finder + pricing calculator rev 16 */
-document.querySelector('.site-menu-toggle')?.addEventListener('click',e=>{const n=e.currentTarget.closest('.nav');const open=n.classList.toggle('menu-open');e.currentTarget.setAttribute('aria-expanded',String(open))});
+const siteMenuToggle=document.querySelector('.site-menu-toggle');
+const closeSiteNav=()=>{const n=siteMenuToggle?.closest('.nav');n?.classList.remove('menu-open');siteMenuToggle?.setAttribute('aria-expanded','false');document.body.classList.remove('nav-lock')};
+siteMenuToggle?.addEventListener('click',e=>{const n=e.currentTarget.closest('.nav');const open=n.classList.toggle('menu-open');e.currentTarget.setAttribute('aria-expanded',String(open));document.body.classList.toggle('nav-lock',open)});
+document.querySelectorAll('.nav .links a').forEach(a=>a.addEventListener('click',closeSiteNav));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSiteNav()});
+window.addEventListener('resize',()=>{if(window.innerWidth>900)closeSiteNav()});
 const serviceData={print:['Printing & Copying','Business cards, flyers, programmes, invitations, stationery and everyday colour/B&W production.'],large:['Large Format','Posters, banners, vinyl, backlit, plans, mounting and large-format finishing.'],wear:['Heat Transfer','T-shirts, caps, mouse pads and transfer production.'],bind:['Binding','Spiral, wire and coil binding with related document finishing.'],finish:['Finishing','Cutting, numbering, stitch & fold, laminating, scoring, perfing and assembly.']};
 document.querySelector('#service-selector')?.addEventListener('click',e=>{const b=e.target.closest('[data-service]');if(!b)return;document.querySelectorAll('.service-choice').forEach(x=>x.classList.toggle('active',x===b));const d=serviceData[b.dataset.service],r=document.querySelector('#service-tool-result');r.innerHTML='<small>RECOMMENDED PATH</small><strong>'+d[0]+'</strong><p>'+d[1]+'</p><div><a class="button black" href="pricing.html#calculator">Estimate cost →</a><a class="button" href="index.html#order">How to order →</a></div>'});
 const calcProduct=document.querySelector('#calc-product'),calcFields=document.querySelector('#calc-fields'),calcTotal=document.querySelector('#calc-total'),calcNote=document.querySelector('#calc-note');
