@@ -55,43 +55,62 @@ function renderPricingSnapshot(){
     <div class="price-total"><span>CATALOGUE STATUS</span><strong>Published prices · confirmation required</strong></div>`;
 }
 function hydrateQuoteProducts(){
-  const select=document.querySelector('#quote-product');if(!select||!hotpData.services)return;
-  const names=[...new Set(hotpData.services.categories.flatMap(c=>c.items))];
-  select.innerHTML=names.map(n=>`<option>${n}</option>`).join('')+'<option>Custom Job</option>';
-  select.value='Business Cards';
+  const select=document.querySelector('#quote-product');if(!select)return;
+  const products=['Business Cards','Full Colour Copying','Black & White Copying','Scanning','Spiral Binding','Wire & Coil Binding','3 Hole Punch','Press Kits','Retractable Banner Kit','Large Format Printing','Large Format Laminating','Large Format B&W','Large Format Scanning','Mounting','Heat Transfers','Carbonated Receipt Books','Programmes','Laminated Bookmarkers','Laminated Prayer Cards','Artwork / Designing','Custom Job'];
+  select.innerHTML=products.map(n=>`<option>${n}</option>`).join('');
+  select.value='Business Cards';renderDynamicQuoteFields();
 }
+const options=(name,label,vals)=>`<label><span>${label}</span><select name="${name}">${vals.map(([v,t])=>`<option value="${v}">${t}</option>`).join('')}</select></label>`;
+const input=(name,label,type='number',extra='')=>`<label><span>${label}</span><input name="${name}" type="${type}" ${extra}></label>`;
+function renderDynamicQuoteFields(){
+  const product=document.querySelector('#quote-product')?.value,wrap=document.querySelector('#dynamic-quote-fields');if(!wrap)return;
+  let html='';
+  if(product==='Business Cards') html=options('sides','Sides',[['single','Single side'],['bf','Back & front']])+options('stock','Stock',[['glossy','Glossy card (published table)'],['other','Other stock — manual quote']]);
+  else if(product.includes('Copying')) html=options('paperSize','Paper size',[['letter','Letter 8½×11'],['legal','Legal 8½×14'],['tabloid','Tabloid 11×17']]);
+  else if(product==='Scanning') html=options('scanMode','Scan type',[['colour','Colour'],['bw','B&W']])+options('paperSize','Size',[['upTo5x7','Up to 5×7'],['letter','8.5×11'],['tabloid','11×17']]);
+  else if(product.includes('Binding')||product==='3 Hole Punch') html=input('pages','Pages','number','value="100" min="1"');
+  else if(product==='Press Kits') html=options('pressType','Press kit',[['blank','Blank'],['single','13×19 single side'],['bf','13×19 back & front']]);
+  else if(product==='Retractable Banner Kit') html=options('bannerType','Item',[['kit','33×82 banner kit'],['replacementBanner','Replacement banner']]);
+  else if(product==='Large Format Printing') html=options('material','Material',Object.keys(hotpData.pricing.deterministic.largeFormatPrintPerSqFt).map(k=>[k,k.replace(/([A-Z])/g,' $1')]))+input('width','Width (ft)','number','step="0.01" min="0"')+input('height','Height (ft)','number','step="0.01" min="0"');
+  else if(product==='Large Format Laminating') html=options('laminateType','Laminate',[['singleSide','Single side'],['encapsulated','B & F encapsulated']])+options('thickness','Thickness',[['mm3','3mm'],['mm5','5mm'],['mm10','10mm']])+input('width','Width (ft)','number','step="0.01" min="0"')+input('height','Height (ft)','number','step="0.01" min="0"');
+  else if(product==='Mounting') html=options('substrate','Substrate',Object.keys(hotpData.pricing.deterministic.mountingPerSqFt).map(k=>[k,k.replace(/([A-Z])/g,' $1')]))+input('width','Width (ft)','number','step="0.01" min="0"')+input('height','Height (ft)','number','step="0.01" min="0"');
+  else if(product==='Carbonated Receipt Books') html=options('copies','Book type',[['duplicate','Duplicate'],['triplicate','Triplicate']])+options('pages','Number of pages',[50,100,200,250,500,750,1000,1500,2000,2500,5000].map(n=>[String(n),String(n)]));
+  else if(product==='Programmes') html=options('programmeMode','Print',[['colour','Colour cover/back + B&W inside'],['bw','B&W cover/back + B&W inside']])+options('pages','Pages',[4,8,12,16,20].map(n=>[String(n),n+' pages']))+options('programmeQty','Quantity',[50,100,150,200,250,300,400,500,600,800,1000].map(n=>[String(n),String(n)]));
+  else if(product==='Laminated Bookmarkers') html=options('sides','Sides',[['singleSide','Single side'],['backFront','Back & front']]);
+  else if(product==='Laminated Prayer Cards') html=options('sides','Sides',[['singleSide','Single side'],['backFront','Back & front']]);
+  else if(product==='Artwork / Designing') html=input('hours','Estimated design hours','number','step="0.25" min="0.25" value="1"');
+  wrap.innerHTML=html;updateQuoteEstimate();
+}
+function band(q,cut,key1,key2){return q<=cut?key1:key2}
 function deterministicEstimate(data){
-  const p=hotpData.pricing;if(!p)return null;
-  const product=data.get('product'),qty=Number(data.get('quantity')||0),size=data.get('size'),colour=data.get('colour');
+  const p=hotpData.pricing?.deterministic;if(!p)return null;
+  const product=data.get('product'),qty=Number(data.get('quantity')||0),manual=reason=>({manual:true,reason}),result=(amount,rule,extra={})=>({amount,rule,...extra});
   if(product==='Business Cards'){
-    const table=p.deterministic.businessCards.singleSide;
-    if(Object.prototype.hasOwnProperty.call(table,String(qty)))return {amount:table[String(qty)],taxIncluded:true,rule:'Published single-side glossy-card total'};
-    return {manual:true,reason:'Published business-card pricing is quantity-specific. Choose 10, 50, 100, 200, 250, 300, 400, 500 or 1000 for an exact published total.'};
+    if(data.get('stock')!=='glossy')return manual('The published business-card matrix applies only to glossy card; other stock requires HOTP confirmation.');
+    const table=data.get('sides')==='bf'?p.businessCards.backAndFront:p.businessCards.singleSide;
+    return table[String(qty)]?result(table[String(qty)],'Published glossy-card total',{taxIncluded:true}):manual('Exact published quantities are 10, 50, 100, 200, 250, 300, 400, 500 and 1000 cards.');
   }
-  if(product==='Spiral'){
-    const table=p.deterministic.binding.spiral;
-    return {amount:qty<=100?table['1-100']:qty<=250?table['101-250']:table['251+'],rule:'Published spiral binding rate'};
+  if(product==='Full Colour Copying'||product==='Black & White Copying'){
+    const type=product.startsWith('Full')?'colour':'bw',size=data.get('paperSize'),table=p.copying[type]?.[size];if(!table)return manual('Select a published paper size.');
+    const key=type==='colour'?band(qty,24,'1-24','25+'):band(qty,1000,'1-1000','1001+');return result(table[key]*qty,'Published per-copy rate × quantity',{unit:table[key]});
   }
-  if(product==='Full Colour'||product==='Black & White'){
-    const type=product==='Full Colour'?'colour':'bw';
-    const paper=size==='A4'?'letter':size==='A3'?'tabloid':null;
-    if(!paper)return {manual:true,reason:'Choose A4/Letter or A3/Tabloid for deterministic copy pricing.'};
-    const table=p.deterministic.copying[type][paper];
-    const key=type==='colour'?(qty<=24?'1-24':'25+'):(qty<=1000?'1-1000':'1001+');
-    return {amount:table[key]*qty,unit:table[key],rule:'Published copy rate × quantity'};
-  }
-  const manual=p.manualQuote.find(x=>product.toLowerCase().includes(x.product.toLowerCase().split(' / ')[0].toLowerCase()));
-  return {manual:true,reason:manual?.reason||'This product needs HOTP confirmation because the published catalogue does not provide a complete deterministic rule for the selected specifications.'};
+  if(product==='Scanning'){const v=p.scanning[data.get('scanMode')]?.[data.get('paperSize')];return v?result(v*qty,'Published scanning rate × quantity'):manual('This scan configuration requires confirmation.')}
+  if(product==='Spiral Binding'||product==='Wire & Coil Binding'){const pages=Number(data.get('pages')),table=product.startsWith('Spiral')?p.binding.spiral:p.binding.wireCoil,key=pages<=100?'1-100':pages<=250?'101-250':'251+';return result(table[key]*qty,'Published binding rate × quantity')}
+  if(product==='3 Hole Punch'){const pages=Number(data.get('pages')),key=pages<=100?'1-100':pages<=250?'100-250':'250+';return result(p.binding.threeHolePunch[key]*qty,'Published punch rate × quantity')}
+  if(product==='Press Kits'){const t=p.pressKits[data.get('pressType')==='single'?'singleSide13x19':data.get('pressType')==='bf'?'backFront13x19':'blank'],key=qty<=24?'1-24':'25+';return result(t[key]*qty,'Published press-kit rate × quantity')}
+  if(product==='Retractable Banner Kit')return result(p.retractableBannerKit[data.get('bannerType')],'Published fixed price');
+  if(['Large Format Printing','Large Format Laminating','Mounting'].includes(product)){const area=Number(data.get('width'))*Number(data.get('height'));if(!area)return manual('Width and height are required for per-square-foot pricing.');let rate;if(product==='Large Format Printing')rate=p.largeFormatPrintPerSqFt[data.get('material')];if(product==='Large Format Laminating')rate=p.largeFormatLaminatingPerSqFt[data.get('laminateType')]?.[data.get('thickness')];if(product==='Mounting')rate=p.mountingPerSqFt[data.get('substrate')];return result(rate*area*qty,`Published ${money(rate)}/sq ft × ${area.toFixed(2)} sq ft × quantity`)}
+  if(product==='Carbonated Receipt Books'){const v=p.carbonatedReceiptBooks[data.get('copies')]?.[data.get('pages')];return v?result(v,'Published receipt-book matrix; extras excluded'):manual('Choose a published page count.')}
+  if(product==='Programmes'){const v=p.programmes[data.get('programmeMode')]?.[data.get('pages')]?.[data.get('programmeQty')];return v?result(v,'Published programme matrix; add-ons excluded'):manual('Choose a published programme combination.')}
+  if(product==='Laminated Bookmarkers'){const t=p.laminatedProducts.bookmarkers[data.get('sides')],key=qty<100?'50-99':qty<250?'100-249':'250+';return qty<50?manual('Published laminated bookmarker minimum is 50.'):result(t[key]*qty,'Published laminated bookmarker rate × quantity')}
+  if(product==='Laminated Prayer Cards'){const t=p.laminatedProducts.prayerCards[data.get('sides')];return qty<6?manual('Published prayer-card minimum is 6 per letter-size sheet.'):result(t['6+']*qty,'Published laminated prayer-card rate × quantity')}
+  if(product==='Artwork / Designing'){const h=Number(data.get('hours')),amount=Math.max(p.artworkDesign.minimum,p.artworkDesign.hourly*h);return result(amount,'Published J$6,000/hour with J$2,000 minimum')}
+  return manual('The catalogue does not provide a complete deterministic rule for this selection. HOTP should confirm the job manually.');
 }
 function updateQuoteEstimate(){
-  const box=document.querySelector('#quote-live-estimate');const form=document.querySelector('#quote-form');
-  if(!box||!form||!hotpData.pricing)return;
+  const box=document.querySelector('#quote-live-estimate'),form=document.querySelector('#quote-form');if(!box||!form||!hotpData.pricing)return;
   const est=deterministicEstimate(new FormData(form));
-  if(est&&!est.manual){
-    box.innerHTML=`<div><span>PUBLISHED ESTIMATE</span><strong>${money(est.amount)}${est.taxIncluded?' incl. tax':''}</strong></div><p>${est.rule}. Final production details still require HOTP confirmation.</p>`;
-  }else{
-    box.innerHTML=`<div><span>MANUAL QUOTE</span><strong>HOTP confirmation required</strong></div><p>${est?.reason||'Complete the job details for pricing guidance.'}</p>`;
-  }
+  box.innerHTML=est&&!est.manual?`<div><span>PUBLISHED ESTIMATE</span><strong>${money(est.amount)}${est.taxIncluded?' incl. tax':''}</strong></div><p>${est.rule}. Final specifications and current pricing still require HOTP confirmation.</p>`:`<div><span>MANUAL QUOTE</span><strong>HOTP confirmation required</strong></div><p>${est?.reason||'Complete the job details for pricing guidance.'}</p>`;
 }
 
 const modal=document.querySelector('.quote-modal');
@@ -103,11 +122,11 @@ document.querySelectorAll('[data-open-quote]').forEach(btn=>btn.addEventListener
 document.querySelectorAll('[data-close-quote]').forEach(btn=>btn.addEventListener('click',closeQuote));
 function closeQuote(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeQuote()});
-form.addEventListener('change',updateQuoteEstimate);form.addEventListener('input',e=>{if(e.target.name==='quantity')updateQuoteEstimate()});
+form.addEventListener('change',e=>{if(e.target.name==='product')renderDynamicQuoteFields();else updateQuoteEstimate()});form.addEventListener('input',e=>{if(e.target.name==='quantity')updateQuoteEstimate()});
 
 form.addEventListener('submit',e=>{
   e.preventDefault();const data=new FormData(form);const est=deterministicEstimate(data);
-  const fields=['product','quantity','size','colour','finish','artwork','turnaround','notes'];
+  const fields=['product','quantity','paperSize','sides','stock','scanMode','pages','pressType','bannerType','material','width','height','laminateType','thickness','substrate','copies','programmeMode','programmeQty','hours','artwork','turnaround','notes'].filter(k=>data.has(k));
   resultContent.innerHTML='<div class="result-grid">'+fields.map(key=>{const label=key.charAt(0).toUpperCase()+key.slice(1);const value=(data.get(key)||'—').toString().replace(/[<>]/g,'');return '<div><span>'+label+'</span><strong>'+value+'</strong></div>'}).join('')+
     `<div><span>Pricing status</span><strong>${est&&!est.manual?money(est.amount):'Manual quote required'}</strong></div></div>`;
   form.hidden=true;result.hidden=false;
