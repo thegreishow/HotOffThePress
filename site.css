@@ -78,3 +78,43 @@
 .price-calculator{border:1px solid #303030;background:#111}.calculator-controls{padding:38px}.calculator-result{padding:40px}.calculator-controls select,.calculator-controls input{border-radius:0;background:#111;border-color:#3b3b3b}.calculator-result .button{align-self:flex-start}
 .about-anchor{margin-top:54px;background:#111}.about-anchor-copy{padding:48px}.about-anchor-copy strong{font-size:clamp(34px,3.6vw,52px)}
 @media(max-width:900px){.nav{height:68px;min-height:68px}.nav .links{gap:0}.nav .links>a:not(.cta){padding:14px 0}.nav .links>a[aria-current=page]:after{bottom:8px}.contact-simple-grid article+article{border-left:0;border-top:1px solid #d5d0c6}.service-tool-head{grid-template-columns:1fr}}
+
+/* Final multipage presentation polish rev 21 */
+::selection{background:var(--yellow);color:#0a0a0a}
+.utility{height:29px;background:#0b0b0b;color:#aaa;border:0}
+.utility span:last-child{color:#ddd}
+.nav{position:sticky;top:0;z-index:80;height:76px!important;min-height:76px!important;padding-top:0;padding-bottom:0;background:rgba(250,248,242,.92);backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25);border-bottom:1px solid rgba(17,17,17,.075)}
+.nav .brand{gap:11px}
+.nav .brand strong{font-size:22px;letter-spacing:-.055em;border-bottom-width:3px}
+.nav .brand span{font-size:9px;line-height:1.05;letter-spacing:.13em}
+.nav .links{gap:8px!important;padding:5px;border:1px solid rgba(17,17,17,.07);border-radius:999px;background:rgba(255,255,255,.48)}
+.nav .links>a:not(.cta){padding:9px 13px!important;border-radius:999px;color:#656565!important;transition:background .22s ease,color .22s ease,transform .22s ease}
+.nav .links>a:not(.cta):after{display:none!important}
+.nav .links>a:not(.cta):hover{color:#111!important;background:#fff;transform:translateY(-1px)}
+.nav .links>a[aria-current=page]{color:#111!important;background:#fff;box-shadow:0 5px 18px rgba(0,0,0,.07)}
+.nav .cta{margin-left:2px!important;border-radius:999px!important;padding:12px 18px!important;box-shadow:0 8px 24px rgba(0,0,0,.09);transition:transform .22s ease,box-shadow .22s ease}
+.nav .cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.14)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.button,.gallery-nav,.carousel-arrow,.portfolio-tab{transition:transform .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease}
+.button:hover{transform:translateY(-2px)}
+/* Gallery crop pass: fill frames instead of exposing white source margins. */
+.portfolio-slide img{transform:scale(1.13);object-position:center}
+.portfolio-slide:hover img,.portfolio-slide.is-active:hover img{transform:scale(1.18)}
+.portfolio-hero-collage .hero-shot img{transform:scale(1.08)}
+.photo img{transform:scale(1.08)}
+.photo:hover img{transform:scale(1.13)}
+.service-gallery-card img,.about-gallery-card img{transform:scale(1.09)}
+.service-gallery-card:hover img,.about-gallery-card:hover img{transform:scale(1.14)}
+.portfolio-slide,.photo,.hero-shot{isolation:isolate}
+.portfolio-slide:before,.photo:after,.hero-shot:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)}
+.portfolio-slide{box-shadow:0 18px 55px rgba(0,0,0,.12)}
+.portfolio-slide.is-active{box-shadow:0 30px 85px rgba(0,0,0,.2)}
+.page-hero p,.section-head p{max-width:620px}
+.card,.contact-card,.price-panel,.service-tool-result{transition:transform .28s ease,box-shadow .28s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(0,0,0,.07)}
+@media(max-width:900px){
+ .nav{height:70px!important;min-height:70px!important}
+ .nav .links{border-radius:0;padding:16px 22px!important;background:rgba(250,248,242,.98)}
+ .nav .links>a:not(.cta){padding:12px 10px!important}
+}
+@media(prefers-reduced-motion:reduce){.nav .links>a,.nav .cta,.button,.portfolio-slide img,.photo img,.service-gallery-card img,.about-gallery-card img,.card{transition:none!important}.portfolio-slide img,.photo img,.service-gallery-card img,.about-gallery-card img{transform:scale(1.08)!important}}
