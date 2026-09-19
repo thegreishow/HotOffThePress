@@ -179,6 +179,7 @@ const result=document.querySelector('.quote-result');
 const resultContent=document.querySelector('#quote-result-content');
 
 document.querySelectorAll('[data-open-quote]').forEach(btn=>btn.addEventListener('click',()=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';updateQuoteEstimate()}));
+document.querySelector('.capability-ribbon')?.addEventListener('click',e=>{const btn=e.target.closest('[data-product]');if(btn)openQuoteFor(btn.dataset.product)});
 document.querySelectorAll('[data-close-quote]').forEach(btn=>btn.addEventListener('click',closeQuote));
 function closeQuote(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeQuote()});
