@@ -351,7 +351,7 @@ button{cursor:pointer}
 @media(max-width:780px){.hero-team{background-position:62% center;background-image:linear-gradient(180deg,rgba(6,6,6,.82) 0%,rgba(6,6,6,.78) 58%,rgba(6,6,6,.92) 100%),url("https://hotpjamaica.com/wp-content/uploads/2022/08/15.png")}.hero-team .hero-art{display:none}}
 
 /* Homepage premium pass — rev 11 */
-.service-grid{grid-template-columns:repeat(3,1fr)}
+.service-grid{grid-template-columns:repeat(4,1fr)}
 .service-photo{height:250px}.service-photo img{filter:saturate(.96) contrast(1.04)}
 .capability-track{gap:0;padding:0;width:max-content;animation:capabilityLoop 42s linear infinite;will-change:transform}
 .capability-set{display:flex;align-items:center;gap:18px;flex:none;padding:11px 9px}
@@ -380,3 +380,8 @@ button{cursor:pointer}
 .concept-signature{margin-top:34px;padding-top:20px;border-top:1px solid #3b3b3b;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}.concept-signature span{font:600 9px "Space Grotesk",sans-serif;letter-spacing:.14em;color:#777;text-transform:uppercase}.concept-signature strong{font:italic 700 clamp(24px,3vw,40px) "Space Grotesk",sans-serif;letter-spacing:-.05em;color:var(--yellow);transform:rotate(-3deg);transform-origin:right center}
 @media(max-width:760px){.service-grid{grid-template-columns:1fr}.home-work-slide{flex-basis:82vw;height:105vw;max-height:560px}.home-carousel-arrow{display:none}.capability-track{animation-duration:52s}.concept-signature{align-items:flex-start;flex-direction:column}.production-showcase:before{right:-360px}}
 @media(prefers-reduced-motion:reduce){.home-work-slide:after,.production-showcase:before,.production-showcase:after,.production-title span,.production-kicker:after{animation:none}}
+
+/* Homepage hierarchy rev 12 */
+.hero .capability-ribbon{margin-top:0}.home-preview .service-grid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.home-preview .service-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.home-preview .service-grid{grid-template-columns:1fr}}
