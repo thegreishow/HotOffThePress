@@ -397,6 +397,7 @@
     <div class="quote-panel" role="dialog" aria-modal="true" aria-labelledby="quote-title">
       <button class="quote-close" aria-label="Close quote builder" data-close-quote>×</button>
 
+      <div class="quote-progress"><span class="active">01 PRODUCT</span><i></i><span>02 DETAILS</span><i></i><span>03 SUMMARY</span></div>
       <div class="quote-panel-head">
         <span class="eyebrow dark">JOB REQUEST BUILDER · DEMO</span>
         <h2 id="quote-title">Prepare your print job.</h2>
@@ -405,15 +406,17 @@
 
       <form id="quote-form" class="quote-form">
         <div class="field-grid">
-          <label><span>Product</span><select name="product" id="quote-product"></select></label>
+          <label class="product-field"><span>Product</span><select name="product" id="quote-product"></select><small id="product-pricing-note">Published pricing available where the catalogue provides a complete rule.</small></label>
           <label><span>Quantity</span><input type="number" name="quantity" value="100" min="1" /></label>
           <div id="dynamic-quote-fields" class="dynamic-fields"></div>
+          <div id="quote-addons" class="quote-addons"></div>
           <label><span>Artwork</span><select name="artwork"><option>Artwork is ready</option><option>I need design help</option><option>I need edits to existing artwork</option></select></label>
           <label><span>Turnaround</span><select name="turnaround"><option>Standard / confirm timing</option><option>Urgent / earliest available</option><option>Specific deadline</option></select></label>
           <label class="upload-field"><span>Artwork file</span><input type="file" name="file" /><small>Demo upload interface — file is not transmitted.</small></label>
         </div>
         <label class="full-field"><span>Job notes</span><textarea name="notes" rows="4" placeholder="Dimensions, stock, finishing, deadline, delivery or anything else we should know..."></textarea></label>
         <div class="quote-summary" id="quote-live-estimate"><div><span>ESTIMATE</span><strong>Choose a product</strong></div><p>Published pricing is calculated only when the catalogue provides a deterministic rule.</p></div>
+        <div class="quote-breakdown" id="quote-breakdown" hidden></div>
         <button type="submit" class="btn btn-black btn-large full-button">Generate Quote Summary</button>
       </form>
 
@@ -421,6 +424,7 @@
         <span class="eyebrow dark">QUOTE SUMMARY</span>
         <h3>Your job is scoped.</h3>
         <div id="quote-result-content"></div>
+        <div class="result-actions"><button class="btn btn-black" type="button" id="copy-quote-summary">Copy Summary</button><a class="btn btn-outline-dark" id="email-quote-summary" href="mailto:hotp@hotpjamaica.com">Email HOTP</a></div>
         <p class="result-note">This redesign demo does not send or store submissions. A production version would route this request directly to HOTP.</p>
         <button class="btn btn-black" data-reset-quote>Edit Quote</button>
       </div>
