@@ -21,7 +21,9 @@ if(stage){
     pages.innerHTML=Array.from({length:totalPages},(_,i)=>`<button type="button" data-page="${i}" class="${i===page?'active':''}" aria-label="Portfolio page ${i+1}">${String(i+1).padStart(2,'0')}</button>`).join('');
     prev.disabled=page===0;next.disabled=page===totalPages-1;
   }
-  fetch('data/portfolio.json').then(r=>r.json()).then(d=>{assets=d.assets||[];render()}).catch(()=>{stage.innerHTML='<p>Portfolio temporarily unavailable.</p>'});
+  const fallbackAssets=[...stage.querySelectorAll('img')].map((img,i)=>({url:img.src,sourceOrder:i+1}));
+  assets=fallbackAssets;
+  fetch('./data/portfolio.json?v=20260919').then(r=>{if(!r.ok)throw new Error('portfolio data');return r.json()}).then(d=>{if(d.assets?.length){assets=d.assets;render()}}).catch(()=>{render()});
   document.querySelector('.portfolio-menu').addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(!b)return;view=b.dataset.view;page=0;document.querySelectorAll('.portfolio-tab').forEach(x=>{x.classList.toggle('active',x===b);x.setAttribute('aria-selected',x===b?'true':'false')});render()});
   pages.addEventListener('click',e=>{const b=e.target.closest('[data-page]');if(b){page=+b.dataset.page;render();stage.scrollIntoView({behavior:'smooth',block:'start'})}});
   prev.addEventListener('click',()=>{if(page){page--;render()}});
