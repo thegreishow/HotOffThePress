@@ -1,0 +1,256 @@
+:root{
+  --ink:#0a0a0a;
+  --paper:#f3f1eb;
+  --white:#fff;
+  --muted:#a7a7a7;
+  --cyan:#00d9ff;
+  --magenta:#ff2d8b;
+  --yellow:#ffd800;
+  --line:rgba(10,10,10,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+button,input,select,textarea{font:inherit}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer}
+.shell{width:min(1220px,calc(100% - 48px));margin:auto}
+.section{padding:120px 0}
+.section-dark{background:var(--ink);color:var(--white)}
+.demo-badge{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--yellow);color:#000;padding:8px 11px;font:700 10px/1 "Space Grotesk",sans-serif;letter-spacing:.14em;border:1px solid #000;box-shadow:4px 4px 0 var(--magenta)}
+.site-header{position:relative;z-index:40;background:var(--paper);border-bottom:1px solid var(--line)}
+.utility-bar{min-height:34px;background:#111;color:#d7d7d7;display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1220px)/2));font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.utility-links{display:flex;gap:24px}
+.nav{height:88px;display:flex;align-items:center;gap:40px}
+.brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+.brand-mark{font-family:"Archivo Black",sans-serif;font-size:25px;letter-spacing:-.08em;position:relative}
+.brand-mark:after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:4px;background:linear-gradient(90deg,var(--cyan) 0 33%,var(--magenta) 33% 66%,var(--yellow) 66%)}
+.brand-copy{font:700 9px/1.05 "Space Grotesk",sans-serif;letter-spacing:.16em}
+.nav-links{display:flex;gap:30px;font:600 13px "Space Grotesk",sans-serif}
+.nav-links a{position:relative}
+.nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:-8px;height:2px;background:#000;transition:.25s}
+.nav-links a:hover:after{right:0}
+.btn{border:0;border-radius:0;padding:14px 20px;font:700 12px "Space Grotesk",sans-serif;letter-spacing:.06em;text-transform:uppercase;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translate(-2px,-2px)}
+.btn-primary{background:var(--yellow);color:#000;box-shadow:5px 5px 0 var(--magenta)}
+.btn-primary:hover{box-shadow:8px 8px 0 var(--cyan)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
+.btn-ghost:hover{background:#fff;color:#000}
+.btn-black{background:#000;color:#fff;box-shadow:5px 5px 0 var(--cyan)}
+.btn-large{padding:18px 25px}
+.menu-toggle{display:none;border:0;background:none;width:40px;height:40px}
+.menu-toggle span{display:block;height:2px;background:#000;margin:6px}
+.hero{padding:82px 0 0;overflow:hidden;position:relative}
+.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 20%,rgba(0,217,255,.12),transparent 26%),radial-gradient(circle at 80% 62%,rgba(255,45,139,.12),transparent 28%);pointer-events:none}
+.hero-grid{min-height:650px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:70px;position:relative}
+.eyebrow{display:inline-flex;font:700 11px "Space Grotesk",sans-serif;letter-spacing:.17em;color:#d1d1d1;margin-bottom:22px}
+.eyebrow.dark{color:#535353}
+.hero h1,.section-heading h2,.about h2,.pricing h2,.urgent h2{font-family:"Archivo Black",sans-serif;letter-spacing:-.055em;margin:0;line-height:.91}
+.hero h1{font-size:clamp(58px,6vw,96px)}
+.hero h1 span{color:var(--yellow)}
+.hero-lede{max-width:640px;font-size:18px;line-height:1.6;color:#c9c9c9;margin:28px 0 32px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+.hero-art{height:560px;position:relative;display:grid;place-items:center}
+.print-stack{position:relative;width:390px;height:470px;transform:rotate(-4deg)}
+.sheet{position:absolute;width:310px;height:420px;border:1px solid rgba(255,255,255,.25);box-shadow:0 26px 70px rgba(0,0,0,.45)}
+.sheet-1{left:70px;top:10px;background:var(--cyan);transform:rotate(8deg);color:#000;display:flex;align-items:flex-end;padding:20px;font:900 28px "Archivo Black",sans-serif}
+.sheet-2{left:28px;top:30px;background:var(--magenta);transform:rotate(-6deg);color:#fff;padding:22px;font:900 28px "Archivo Black",sans-serif}
+.sheet-3{left:48px;top:22px;background:#f2eee5;color:#0a0a0a;padding:34px;display:flex;flex-direction:column;justify-content:space-between}
+.sheet-3:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.025),rgba(0,0,0,.025) 1px,transparent 1px,transparent 4px)}
+.sheet-3 strong{position:relative;font:900 58px/.86 "Archivo Black",sans-serif;letter-spacing:-.06em}
+.sheet-kicker,.sheet-3 small{position:relative;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.15em}
+.registration-marks{position:absolute;inset:0;pointer-events:none}
+.registration-marks i{position:absolute;width:20px;height:20px;border:1px solid #fff;border-radius:50%;opacity:.5}
+.registration-marks i:nth-child(1){left:10%;top:10%}
+.registration-marks i:nth-child(2){right:8%;top:18%}
+.registration-marks i:nth-child(3){left:18%;bottom:13%}
+.registration-marks i:nth-child(4){right:10%;bottom:8%}
+.trust-strip{margin-top:40px;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(4,1fr)}
+.trust-strip div{padding:26px max(24px,calc((100vw - 1220px)/8));border-right:1px solid rgba(255,255,255,.12)}
+.trust-strip div:last-child{border-right:0}
+.trust-strip strong{display:block;font:700 26px "Space Grotesk",sans-serif;color:var(--yellow)}
+.trust-strip span{font-size:12px;color:#aaa;text-transform:uppercase;letter-spacing:.1em}
+.section-heading{display:grid;grid-template-columns:1fr .7fr;gap:80px;align-items:end;margin-bottom:54px}
+.section-heading h2,.about h2,.pricing h2,.urgent h2{font-size:clamp(46px,5vw,74px)}
+.section-heading p,.pricing-copy{font-size:17px;line-height:1.65;color:#585858;max-width:520px;margin:0}
+.section-heading.light p,.pricing-copy{color:#aaa}
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.service-card{min-height:440px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px;display:flex;flex-direction:column;background:#f5f2ec;transition:.25s}
+.service-card:hover{background:#fff;transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.08);z-index:2}
+.service-card.feature-card{grid-column:span 2}
+.service-visual{height:250px;background:#e9e5dc;position:relative;overflow:hidden;display:grid;place-items:center}
+.service-meta{padding:22px 5px 6px}
+.service-meta>span{font:700 10px "Space Grotesk",sans-serif;color:#888}
+.service-meta h3{font:700 23px/1.08 "Space Grotesk",sans-serif;margin:8px 0 9px}
+.service-meta p{margin:0;color:#636363;font-size:14px;line-height:1.55}
+.business-card-visual{background:#d8f8ff}
+.bc{width:190px;height:110px;position:absolute;box-shadow:0 18px 30px rgba(0,0,0,.18)}
+.bc-back{background:var(--magenta);transform:translate(-55px,20px) rotate(-9deg)}
+.bc-front{background:#111;color:#fff;transform:translate(38px,-8px) rotate(5deg);padding:18px;font:900 27px/.86 "Archivo Black",sans-serif}
+.poster-visual{background:#f9dfea}
+.poster{width:160px;height:210px;background:#111;color:#fff;padding:18px;display:flex;flex-direction:column;justify-content:space-between;transform:rotate(4deg);box-shadow:15px 18px 0 var(--yellow)}
+.poster strong{font:900 40px/.87 "Archivo Black",sans-serif}
+.poster span{font:700 8px "Space Grotesk",sans-serif;letter-spacing:.15em}
+.banner-visual{background:var(--yellow);place-items:end start}
+.banner-copy{font:900 64px/.82 "Archivo Black",sans-serif;letter-spacing:-.07em;padding:20px}
+.sticker-visual{background:#101010}
+.sticker{position:absolute;border-radius:999px;padding:15px 20px;font:900 20px "Archivo Black",sans-serif;border:4px solid #fff}
+.s1{background:var(--cyan);transform:translate(-52px,-50px) rotate(-9deg)}
+.s2{background:var(--yellow);transform:translate(68px,0) rotate(11deg)}
+.s3{background:var(--magenta);color:#fff;transform:translate(-30px,64px) rotate(4deg)}
+.apparel-visual{background:#d9d5cd}
+.tee{width:170px;height:180px;background:#111;clip-path:polygon(20% 0,35% 12%,65% 12%,80% 0,100% 20%,85% 38%,76% 31%,76% 100%,24% 100%,24% 31%,15% 38%,0 20%);display:grid;place-items:center;color:var(--yellow)}
+.tee span{font:900 28px/.86 "Archivo Black",sans-serif;text-align:center}
+.finish-visual{background:#cfeef3}
+.book{position:absolute;width:145px;height:190px;background:#fff;border:1px solid #111;box-shadow:8px 10px 0 rgba(0,0,0,.1)}
+.b1{transform:translate(-25px,15px) rotate(-8deg);background:var(--magenta)}
+.b2{transform:translate(17px,7px) rotate(8deg);background:var(--yellow)}
+.b3{background:#111;transform:translate(0,-3px);border-left:9px solid #aaa}
+.copy-visual{background:#eee}
+.paper-stack{position:relative;width:160px;height:175px}
+.paper-stack i{position:absolute;inset:0;background:#fff;border:1px solid #bbb}
+.paper-stack i:nth-child(1){transform:translate(-22px,20px) rotate(-6deg)}
+.paper-stack i:nth-child(2){transform:translate(20px,13px) rotate(5deg)}
+.paper-stack i:nth-child(3){transform:translate(-4px,6px) rotate(-1deg)}
+.paper-stack i:nth-child(4):after{content:"COPY / PRINT";position:absolute;left:20px;top:28px;font:900 22px/.9 "Archivo Black",sans-serif}
+.custom-visual{background:#111}
+.plus{font:300 130px "DM Sans",sans-serif;color:var(--yellow)}
+.text-link{border:0;background:none;padding:0;margin-top:16px;font-weight:700;text-align:left}
+.process{padding:120px 0}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid rgba(255,255,255,.16)}
+.step{padding:38px 40px 10px 0;border-right:1px solid rgba(255,255,255,.16);min-height:220px}
+.step+.step{padding-left:40px}
+.step:last-child{border-right:0}
+.step-no{font:700 12px "Space Grotesk",sans-serif;color:var(--yellow)}
+.step h3{font:700 25px "Space Grotesk",sans-serif;margin:36px 0 14px}
+.step p{color:#a5a5a5;line-height:1.6;margin:0}
+.portfolio-section{background:#ebe7de}
+.filter-bar{display:flex;gap:10px;margin-bottom:30px;flex-wrap:wrap}
+.filter{border:1px solid #bbb;background:transparent;padding:10px 15px;font:700 11px "Space Grotesk",sans-serif;text-transform:uppercase}
+.filter.active,.filter:hover{background:#000;color:#fff;border-color:#000}
+.portfolio-grid{display:grid;grid-template-columns:1.2fr .8fr;grid-auto-rows:390px;gap:18px}
+.work-card{background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.work-art{flex:1;position:relative;display:grid;place-items:center;overflow:hidden}
+.work-caption{padding:18px 20px;display:flex;justify-content:space-between;border-top:1px solid #ddd}
+.work-caption strong{font:700 14px "Space Grotesk",sans-serif}
+.work-caption span{font-size:11px;color:#777;text-transform:uppercase}
+.work-a .work-art{background:var(--magenta);color:#fff}
+.work-a .work-art span{font:900 clamp(54px,7vw,100px)/.78 "Archivo Black",sans-serif;letter-spacing:-.07em;transform:rotate(-5deg)}
+.work-b .work-art{background:var(--cyan)}
+.mini-cards{position:relative;width:220px;height:170px}
+.mini-cards i{position:absolute;width:180px;height:105px;background:#111}
+.mini-cards i:nth-child(1){transform:translate(-35px,10px) rotate(-10deg)}
+.mini-cards i:nth-child(2){transform:translate(20px,48px) rotate(7deg);background:#fff}
+.mini-cards i:nth-child(3){transform:translate(10px,-10px) rotate(2deg);background:var(--yellow)}
+.work-c .work-art{background:#121212}
+.portfolio-shirt{color:var(--yellow);font:900 70px/.72 "Archivo Black",sans-serif;text-align:center;border:3px solid var(--yellow);padding:28px 45px}
+.work-d .work-art{background:#f2efe8}
+.magazine{width:190px;height:240px;background:#111;color:#fff;padding:26px;font:900 44px/.9 "Archivo Black",sans-serif;box-shadow:18px 18px 0 var(--magenta);transform:rotate(3deg)}
+.magazine small{font:700 10px "Space Grotesk",sans-serif;color:var(--yellow)}
+.about{background:#f8f6f0}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:100px;align-items:center}
+.about-copy p{font-size:17px;line-height:1.7;color:#555;max-width:600px}
+.dark-link{color:#000}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat-card{aspect-ratio:1.25;padding:24px;display:flex;flex-direction:column;justify-content:space-between}
+.stat-card strong{font:900 68px "Archivo Black",sans-serif;letter-spacing:-.06em}
+.stat-card span{font:700 14px/1.2 "Space Grotesk",sans-serif;text-transform:uppercase}
+.stat-card.black{background:#111;color:#fff}
+.stat-card.cyan{background:var(--cyan)}
+.stat-card.magenta{background:var(--magenta);color:#fff}
+.stat-card.yellow{background:var(--yellow)}
+.pricing{padding:120px 0}
+.pricing-grid{display:grid;grid-template-columns:1fr .8fr;gap:100px;align-items:center}
+.pricing-copy{margin:26px 0 32px}
+.pricing-actions{display:flex;gap:15px;flex-wrap:wrap}
+.price-ui{background:#f1eee6;color:#111;padding:30px;box-shadow:16px 16px 0 var(--cyan)}
+.price-ui-head{display:flex;justify-content:space-between;padding-bottom:20px;border-bottom:2px solid #111;font:700 11px "Space Grotesk",sans-serif}
+.price-ui-head span:last-child{background:var(--yellow);padding:4px 7px}
+.price-row{display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid #bbb}
+.price-row span{color:#666}
+.price-total{padding-top:26px}
+.price-total span{display:block;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.12em;color:#777;margin-bottom:8px}
+.price-total strong{font:700 28px "Space Grotesk",sans-serif}
+.urgent{background:var(--yellow)}
+.urgent-card{display:flex;justify-content:space-between;align-items:center;gap:40px}
+.footer{padding:80px 0 35px}
+.footer-grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:50px}
+.footer-mark{display:inline-block;margin-bottom:30px}
+.footer-brand p,.footer-grid p{color:#aaa;line-height:1.7;font-size:14px}
+.footer-label{font:700 10px "Space Grotesk",sans-serif;letter-spacing:.15em;color:var(--yellow)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:50px;padding-top:24px;display:flex;justify-content:space-between;color:#888;font-size:11px}
+.footer-quote{color:#fff}
+.mobile-quote-bar{display:none}
+.quote-modal{position:fixed;inset:0;z-index:100;pointer-events:none;opacity:0;transition:.25s}
+.quote-modal.open{pointer-events:auto;opacity:1}
+.quote-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(6px)}
+.quote-panel{position:absolute;right:0;top:0;bottom:0;width:min(720px,100%);background:#f4f1ea;padding:48px;overflow:auto;transform:translateX(100%);transition:.35s cubic-bezier(.2,.7,.2,1)}
+.quote-modal.open .quote-panel{transform:translateX(0)}
+.quote-close{position:absolute;right:24px;top:18px;border:0;background:none;font-size:38px}
+.quote-panel-head h2{font:900 clamp(38px,5vw,62px)/.95 "Archivo Black",sans-serif;letter-spacing:-.05em;margin:0}
+.quote-panel-head p{color:#666;line-height:1.6}
+.quote-form{margin-top:34px}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.quote-form label span{display:block;font:700 10px "Space Grotesk",sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.quote-form input,.quote-form select,.quote-form textarea{width:100%;border:1px solid #c6c1b8;background:#fff;padding:14px;border-radius:0;outline:none}
+.quote-form input:focus,.quote-form select:focus,.quote-form textarea:focus{border-color:#000;box-shadow:0 0 0 2px var(--yellow)}
+.upload-field small{font-size:10px;color:#777;display:block;margin-top:6px}
+.full-field{display:block;margin-top:16px}
+.quote-summary{margin:20px 0;background:#111;color:#fff;padding:22px}
+.quote-summary div{display:flex;justify-content:space-between;gap:20px}
+.quote-summary span{font:700 10px "Space Grotesk",sans-serif;color:var(--yellow)}
+.quote-summary p{color:#aaa;font-size:12px;margin:12px 0 0;line-height:1.5}
+.full-button{width:100%}
+.quote-result h3{font:900 42px "Archivo Black",sans-serif;margin:4px 0 24px}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #bbb;border-left:1px solid #bbb}
+.result-grid div{padding:15px;border-right:1px solid #bbb;border-bottom:1px solid #bbb}
+.result-grid span{display:block;font-size:10px;color:#777;text-transform:uppercase}
+.result-grid strong{display:block;margin-top:5px}
+.result-note{font-size:12px;color:#777;line-height:1.6;margin:20px 0}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:980px){
+  .nav-links{display:none}
+  .nav-quote{display:none}
+  .menu-toggle{display:block}
+  .nav.open .nav-links{display:flex;position:absolute;top:88px;left:0;right:0;background:var(--paper);padding:25px;flex-direction:column;border-top:1px solid var(--line);box-shadow:0 18px 30px rgba(0,0,0,.1)}
+  .hero-grid{grid-template-columns:1fr;gap:20px}
+  .hero-art{height:480px}
+  .service-grid{grid-template-columns:repeat(2,1fr)}
+  .section-heading,.about-grid,.pricing-grid{grid-template-columns:1fr;gap:40px}
+  .portfolio-grid{grid-template-columns:1fr 1fr;grid-auto-rows:330px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .shell{width:min(100% - 28px,1220px)}
+  .section{padding:80px 0}
+  .utility-bar{display:none}
+  .nav{height:72px}
+  .nav.open .nav-links{top:72px}
+  .hero{padding-top:52px}
+  .hero h1{font-size:54px}
+  .hero-lede{font-size:16px}
+  .hero-art{height:390px}
+  .print-stack{transform:scale(.78) rotate(-4deg)}
+  .trust-strip{grid-template-columns:1fr 1fr}
+  .trust-strip div{padding:18px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .section-heading{margin-bottom:34px}
+  .service-grid{grid-template-columns:1fr}
+  .service-card.feature-card{grid-column:span 1}
+  .process-grid{grid-template-columns:1fr}
+  .step,.step+.step{padding:28px 0;border-right:0;border-bottom:1px solid rgba(255,255,255,.16)}
+  .portfolio-grid{grid-template-columns:1fr;grid-auto-rows:360px}
+  .about-stats{grid-template-columns:1fr 1fr}
+  .stat-card{padding:16px}
+  .stat-card strong{font-size:48px}
+  .urgent-card{align-items:flex-start;flex-direction:column}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{padding-bottom:70px}
+  .mobile-quote-bar{display:block;position:fixed;z-index:55;left:10px;right:10px;bottom:10px}
+  .mobile-quote-bar button{width:100%;border:0;background:var(--yellow);padding:16px;font:800 12px "Space Grotesk",sans-serif;text-transform:uppercase;box-shadow:4px 4px 0 var(--magenta)}
+  .demo-badge{display:none}
+  .quote-panel{padding:52px 20px 30px}
+  .field-grid{grid-template-columns:1fr}
+  .quote-summary div{flex-direction:column}
+  .result-grid{grid-template-columns:1fr}
+}
