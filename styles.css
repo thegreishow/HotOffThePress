@@ -478,3 +478,80 @@ button{cursor:pointer}
  .home-preview-dark .service-grid,.process-grid,.order-image-panel .order-grid{grid-template-columns:1fr!important}
  .home-preview-dark .service-card,.process .step,.order-image-panel .order-card{border-radius:14px!important}
 }
+
+/* Homepage panel cleanup rev 18 */
+.home-preview-dark .section-heading,
+.process .section-heading,
+.order-image-panel .section-heading{
+  border-bottom:0!important;
+  padding-bottom:0!important;
+  margin-bottom:48px!important;
+}
+.home-preview-dark .service-grid,
+.process-grid,
+.order-image-panel .order-grid{
+  border:0!important;
+  gap:18px!important;
+}
+.home-preview-dark .service-card,
+.process .step,
+.order-image-panel .order-card{
+  border:0!important;
+  border-radius:14px!important;
+  box-shadow:none!important;
+}
+.home-preview-dark .service-card{
+  background:#121212!important;
+  overflow:hidden;
+}
+.home-preview-dark .service-card+.service-card,
+.process .step+.step,
+.order-image-panel .order-card+.order-card{
+  border-left:0!important;
+  border-top:0!important;
+}
+.process .step{
+  background:#121212!important;
+  min-height:280px;
+  padding:34px 32px 38px!important;
+}
+.order-image-panel .order-card{
+  background:rgba(14,14,14,.78)!important;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  min-height:260px;
+}
+.home-preview-dark .service-meta{
+  padding:28px 26px 32px!important;
+}
+.home-preview-dark,
+.process,
+.order-image-panel{
+  padding-top:96px!important;
+  padding-bottom:96px!important;
+}
+.home-preview-dark .section-heading,
+.process .section-heading,
+.order-image-panel .section-heading{
+  grid-template-columns:1fr .72fr;
+  gap:72px;
+  align-items:end;
+}
+.home-preview-dark .section-heading h2,
+.process .section-heading h2,
+.order-image-panel .section-heading h2{
+  max-width:700px;
+}
+.home-preview-dark .section-heading p,
+.process .section-heading p,
+.order-image-panel .section-heading p{
+  max-width:480px;
+}
+@media(max-width:900px){
+  .home-preview-dark .section-heading,
+  .process .section-heading,
+  .order-image-panel .section-heading{grid-template-columns:1fr;gap:24px}
+  .home-preview-dark .service-grid,
+  .process-grid,
+  .order-image-panel .order-grid{gap:12px!important}
+}
