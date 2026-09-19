@@ -28,7 +28,7 @@ if(stage){
  prev?.addEventListener('click',()=>move(-1));next?.addEventListener('click',()=>move(1));
  let autoFrame=null,autoPaused=false,lastAutoTime=0;
  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- const AUTO_SPEED=18;
+ const AUTO_SPEED=28;
  function autoLoop(now){
    if(!lastAutoTime)lastAutoTime=now;
    const dt=Math.min((now-lastAutoTime)/1000,.05);lastAutoTime=now;
@@ -41,8 +41,8 @@ if(stage){
  function startAuto(){if(reduced||autoFrame)return;lastAutoTime=0;autoFrame=requestAnimationFrame(autoLoop)}
  function pauseAuto(){autoPaused=true}
  function resumeAuto(){autoPaused=false;lastAutoTime=performance.now();startAuto()}
- stage.addEventListener('mouseenter',pauseAuto);stage.addEventListener('mouseleave',resumeAuto);stage.addEventListener('focusin',pauseAuto);stage.addEventListener('focusout',resumeAuto);stage.addEventListener('touchstart',pauseAuto,{passive:true});stage.addEventListener('touchend',()=>setTimeout(resumeAuto,1200),{passive:true});document.addEventListener('visibilitychange',()=>document.hidden?pauseAuto():resumeAuto());startAuto();
- let down=false,x=0,left=0;stage.addEventListener('pointerdown',e=>{down=true;x=e.clientX;left=stage.scrollLeft;stage.setPointerCapture(e.pointerId);stage.classList.add('dragging')});stage.addEventListener('pointermove',e=>{if(down)stage.scrollLeft=left-(e.clientX-x)});['pointerup','pointercancel'].forEach(ev=>stage.addEventListener(ev,()=>{down=false;stage.classList.remove('dragging')}));
+ stage.addEventListener('pointerdown',pauseAuto);stage.addEventListener('touchstart',pauseAuto,{passive:true});stage.addEventListener('touchend',()=>setTimeout(resumeAuto,900),{passive:true});document.addEventListener('visibilitychange',()=>document.hidden?pauseAuto():resumeAuto());startAuto();
+ let down=false,x=0,left=0;stage.addEventListener('pointerdown',e=>{down=true;x=e.clientX;left=stage.scrollLeft;stage.setPointerCapture(e.pointerId);stage.classList.add('dragging')});stage.addEventListener('pointermove',e=>{if(down)stage.scrollLeft=left-(e.clientX-x)});['pointerup','pointercancel'].forEach(ev=>stage.addEventListener(ev,()=>{down=false;stage.classList.remove('dragging');setTimeout(resumeAuto,900)}));
  function showLightbox(i){lightboxIndex=i;const a=currentSet[i];if(!a||!dialog)return;lightImg.src=a.url;caption.textContent=`HOTP PORTFOLIO · WORK ${String(a.sourceOrder).padStart(2,'0')}`;dialog.showModal()}
  stage.addEventListener('click',e=>{if(Math.abs(stage.scrollLeft-left)>8)return;const b=e.target.closest('[data-index]');if(b)showLightbox(Number(b.dataset.index))});
  dialog?.querySelector('.lightbox-close')?.addEventListener('click',()=>dialog.close());dialog?.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});dialog?.querySelector('.next')?.addEventListener('click',()=>showLightbox((lightboxIndex+1)%currentSet.length));dialog?.querySelector('.prev')?.addEventListener('click',()=>showLightbox((lightboxIndex-1+currentSet.length)%currentSet.length));document.addEventListener('keydown',e=>{if(!dialog?.open)return;if(e.key==='ArrowRight')showLightbox((lightboxIndex+1)%currentSet.length);if(e.key==='ArrowLeft')showLightbox((lightboxIndex-1+currentSet.length)%currentSet.length)});
