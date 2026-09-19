@@ -93,7 +93,7 @@
         <p>Browse the core services available from HOTP, then send us the specifications for your job.</p>
       </div>
 
-      <div class="service-grid">
+      <div class="service-grid" id="service-grid">
         <article class="service-card feature-card reveal" data-category="Digital Print">
           <div class="service-visual business-card-visual">
             <div class="bc bc-back"></div>
@@ -260,7 +260,7 @@
           <button class="filter" data-filter="Finishing">Finishing</button>
         </div>
 
-        <div class="portfolio-grid real-work-grid">
+        <div class="portfolio-grid real-work-grid" id="portfolio-grid">
           <article class="work-card reveal" data-work="Large Format">
             <div class="real-work-image"><img src="https://hotpjamaica.com/wp-content/uploads/2022/10/Group-108-1.png" alt="Large-format print work produced by Hot Off The Press" loading="lazy"></div>
             <div class="work-caption"><strong>Large Format Production</strong><span>HOTP Portfolio</span></div>
@@ -315,7 +315,7 @@
             <a class="btn btn-ghost btn-large" href="https://hotpjamaica.com/wp-content/uploads/2025/09/HOTP_Price_List_Brochure_tabloid_2025.pdf" target="_blank" rel="noopener">View 2025 Price Guide</a>
           </div>
         </div>
-        <div class="price-ui reveal">
+        <div class="price-ui reveal" id="pricing-snapshot">
           <div class="price-ui-head"><span>PUBLISHED RATE SNAPSHOT</span><span>SEP 2025</span></div>
           <div class="price-row"><span>Colour Copy · Letter · 1–24</span><strong>J$100 ea.</strong></div>
           <div class="price-row"><span>B&W Copy · Letter · 1–1000</span><strong>J$10 ea.</strong></div>
@@ -407,7 +407,7 @@
         <div class="field-grid">
           <label>
             <span>Product</span>
-            <select name="product">
+            <select name="product" id="quote-product">
               <option>Business Cards</option>
               <option>Letterheads / Press Kits</option>
               <option>Invitations / Certificates / Programmes</option>
@@ -491,7 +491,7 @@
           <textarea name="notes" rows="4" placeholder="Dimensions, stock, finishing, deadline, delivery or anything else we should know..."></textarea>
         </label>
 
-        <div class="quote-summary">
+        <div class="quote-summary" id="quote-live-estimate">
           <div>
             <span>ESTIMATE</span>
             <strong>Requires HOTP confirmation</strong>
