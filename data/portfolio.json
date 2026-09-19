@@ -1,0 +1,34 @@
+{
+  "source": "https://hotpjamaica.com/portfolio/",
+  "note": "Public portfolio currently exposes All, Large Format and Digital Format filters. Asset catalogue starts with verified public WordPress uploads used by the redesign; expand via WordPress media API/admin export when credentials are available.",
+  "categories": [
+    "Large Format",
+    "Digital Format"
+  ],
+  "assets": [
+    {
+      "id": "group-108-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-108-1.png",
+      "category": "Large Format",
+      "title": "Large Format Production"
+    },
+    {
+      "id": "group-121",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-121.png",
+      "category": "Digital Format",
+      "title": "Digital Print"
+    },
+    {
+      "id": "group-37",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-37.png",
+      "category": "Digital Format",
+      "title": "Finished Print Work"
+    },
+    {
+      "id": "group-110-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-110-1.png",
+      "category": "Large Format",
+      "title": "Custom Production"
+    }
+  ]
+}
