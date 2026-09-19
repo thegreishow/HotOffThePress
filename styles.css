@@ -385,3 +385,23 @@ button{cursor:pointer}
 .hero .capability-ribbon{margin-top:0}.home-preview .service-grid{grid-template-columns:repeat(4,1fr)}
 @media(max-width:900px){.home-preview .service-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.home-preview .service-grid{grid-template-columns:1fr}}
+
+/* Real-image panel experiment — rev 14 */
+.image-panel{position:relative;isolation:isolate;background-color:#0a0a0a;background-size:cover;background-position:center;background-repeat:no-repeat;overflow:hidden}
+.image-panel:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none}
+.image-panel>.shell{position:relative;z-index:1}
+
+.process-image-panel{background-image:url("https://hotpjamaica.com/wp-content/uploads/2022/10/Group-111-1.png");background-position:center 46%}
+.process-image-panel:before{background:linear-gradient(90deg,rgba(5,5,5,.95) 0%,rgba(5,5,5,.86) 45%,rgba(5,5,5,.64) 100%),linear-gradient(0deg,rgba(0,217,255,.08),transparent 52%)}
+.process-image-panel .step{background:rgba(8,8,8,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:rgba(255,255,255,.16)}
+.process-image-panel .section-heading.light p{color:#d2d2d2}
+
+.pricing-image-panel{background-image:url("https://hotpjamaica.com/wp-content/uploads/2022/10/Group-119.png");background-position:center}
+.pricing-image-panel:before{background:linear-gradient(100deg,rgba(5,5,5,.96) 0%,rgba(5,5,5,.87) 48%,rgba(5,5,5,.56) 100%),linear-gradient(0deg,rgba(255,45,139,.08),transparent 60%)}
+.pricing-image-panel .price-ui{box-shadow:16px 16px 0 var(--cyan)}
+
+.future-image-panel{background-image:url("https://hotpjamaica.com/wp-content/uploads/2022/10/Group-126.png");background-position:center 44%}
+.future-image-panel:before{background:linear-gradient(90deg,rgba(5,5,5,.94),rgba(5,5,5,.74) 55%,rgba(5,5,5,.48)),linear-gradient(0deg,rgba(255,216,0,.08),transparent 55%)}
+.future-image-panel .future-card{background:rgba(242,239,231,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+
+@media(max-width:760px){.process-image-panel:before,.pricing-image-panel:before,.future-image-panel:before{background:rgba(5,5,5,.84)}.image-panel{background-position:center}}
