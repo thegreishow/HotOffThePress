@@ -305,3 +305,17 @@ button{cursor:pointer}
 .dynamic-fields{display:contents}
 .quote-summary strong{font-variant-numeric:tabular-nums}
 .quote-summary p{max-width:62ch}
+
+.quote-progress{display:flex;align-items:center;gap:10px;margin:0 42px 24px 0;font:700 9px "Space Grotesk",sans-serif;letter-spacing:.12em;color:#999}
+.quote-progress i{height:1px;flex:1;background:#ddd}.quote-progress span.active{color:#111}.quote-progress.complete span{color:#111}.quote-progress.complete i{background:#111}
+.product-field small{display:block;margin-top:7px;color:#777;line-height:1.35}
+.quote-addons{grid-column:1/-1;display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:4px 0 10px}
+.addon-title{font:700 9px "Space Grotesk",sans-serif;letter-spacing:.12em;color:#777;margin-right:4px}
+.check-option{display:flex!important;flex-direction:row!important;align-items:center;gap:7px!important;border:1px solid #ddd;padding:9px 12px;background:#fff;cursor:pointer}
+.check-option input{width:auto!important;margin:0}.check-option span{font-size:11px!important;margin:0!important}
+.quote-breakdown{margin-top:-10px;margin-bottom:18px;border:1px solid #ddd;background:#fafafa;padding:16px}
+.quote-breakdown>span{display:block;font:700 9px "Space Grotesk",sans-serif;letter-spacing:.12em;margin-bottom:10px}
+.quote-breakdown>div{display:flex;justify-content:space-between;gap:18px;padding:7px 0;border-top:1px solid #e7e7e7;font-size:12px}
+.quote-breakdown em{font-style:normal;color:#666}.quote-breakdown .breakdown-total{font-size:13px;color:#111}.quote-breakdown .breakdown-total em{font-weight:700;color:#111}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+@media(max-width:640px){.quote-progress{margin-right:34px}.quote-addons{align-items:stretch;flex-direction:column}.check-option{width:100%}.result-actions>*{width:100%;text-align:center}}
