@@ -36,3 +36,5 @@ if(stage){
   dialog.querySelector('.prev').addEventListener('click',()=>showLightbox((lightboxIndex-1+currentVisible.length)%currentVisible.length));
   document.addEventListener('keydown',e=>{if(!dialog.open)return;if(e.key==='ArrowRight')dialog.querySelector('.next').click();if(e.key==='ArrowLeft')dialog.querySelector('.prev').click()});
 }
+
+document.querySelector('.price-category-menu')?.addEventListener('click',e=>{const b=e.target.closest('[data-price-category]');if(!b)return;const id=b.dataset.priceCategory;document.querySelectorAll('.price-category').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.price-detail').forEach(x=>x.classList.toggle('active',x.dataset.pricePanel===id));});
