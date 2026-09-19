@@ -1,34 +1,326 @@
 {
   "source": "https://hotpjamaica.com/portfolio/",
-  "note": "Public portfolio currently exposes All, Large Format and Digital Format filters. Asset catalogue starts with verified public WordPress uploads used by the redesign; expand via WordPress media API/admin export when credentials are available.",
-  "categories": [
+  "cataloguedAt": "2026-09-19",
+  "sourceCategories": [
     "Large Format",
     "Digital Format"
   ],
+  "note": "45 distinct public portfolio image URLs catalogued directly from the original HOTP portfolio page. Category assignment is intentionally left neutral where the public page markup did not expose a reliable per-image label through retrieval; no category is invented.",
   "assets": [
     {
       "id": "group-108-1",
       "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-108-1.png",
-      "category": "Large Format",
-      "title": "Large Format Production"
+      "sourceOrder": 1,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
     },
     {
       "id": "group-121",
       "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-121.png",
-      "category": "Digital Format",
-      "title": "Digital Print"
+      "sourceOrder": 2,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
     },
     {
       "id": "group-37",
       "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-37.png",
-      "category": "Digital Format",
-      "title": "Finished Print Work"
+      "sourceOrder": 3,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
     },
     {
       "id": "group-110-1",
       "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-110-1.png",
-      "category": "Large Format",
-      "title": "Custom Production"
+      "sourceOrder": 4,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-109",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-109.png",
+      "sourceOrder": 5,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-122",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-122.png",
+      "sourceOrder": 6,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-111-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-111-1.png",
+      "sourceOrder": 7,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-129-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-129-1.png",
+      "sourceOrder": 8,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-123",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-123.png",
+      "sourceOrder": 9,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-126",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-126.png",
+      "sourceOrder": 10,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-35",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-35.png",
+      "sourceOrder": 11,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-184-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-184-1.png",
+      "sourceOrder": 12,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-79-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-79-1.png",
+      "sourceOrder": 13,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-131-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-131-1.png",
+      "sourceOrder": 14,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-81-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-81-1.png",
+      "sourceOrder": 15,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-114-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-114-1.png",
+      "sourceOrder": 16,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-115-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-115-1.png",
+      "sourceOrder": 17,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-78-2",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-78-2.png",
+      "sourceOrder": 18,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-133",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-133.png",
+      "sourceOrder": 19,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-116-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-116-1.png",
+      "sourceOrder": 20,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-37-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-37-1.png",
+      "sourceOrder": 21,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-134",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-134.png",
+      "sourceOrder": 22,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-118",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-118.png",
+      "sourceOrder": 23,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-119",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-119.png",
+      "sourceOrder": 24,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-125",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-125.png",
+      "sourceOrder": 25,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-120",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-120.png",
+      "sourceOrder": 26,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-127",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-127.png",
+      "sourceOrder": 27,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-179",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-179.png",
+      "sourceOrder": 28,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-106",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-106.png",
+      "sourceOrder": 29,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-180",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-180.png",
+      "sourceOrder": 30,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-181",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-181.png",
+      "sourceOrder": 31,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-182",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-182.png",
+      "sourceOrder": 32,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-104-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-104-1.png",
+      "sourceOrder": 33,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-101",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-101.png",
+      "sourceOrder": 34,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-141",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-141.png",
+      "sourceOrder": 35,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-103",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-103.png",
+      "sourceOrder": 36,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-128",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-128.png",
+      "sourceOrder": 37,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-186",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-186.png",
+      "sourceOrder": 38,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-105",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-105.png",
+      "sourceOrder": 39,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-100-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-100-1.png",
+      "sourceOrder": 40,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-107",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-107.png",
+      "sourceOrder": 41,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-136",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-136.png",
+      "sourceOrder": 42,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-137",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-137.png",
+      "sourceOrder": 43,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-102-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2020/11/Group-102-1.png",
+      "sourceOrder": 44,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
+    },
+    {
+      "id": "group-139-1",
+      "url": "https://hotpjamaica.com/wp-content/uploads/2022/10/Group-139-1.png",
+      "sourceOrder": 45,
+      "category": "HOTP Portfolio",
+      "verifiedOnPortfolioPage": true
     }
   ]
 }
